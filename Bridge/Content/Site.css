@@ -5,12 +5,6 @@
     background-color:#fefbf0;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -45,17 +39,15 @@ textarea {
     color: #6a6967;
 }
 
-/*spacing between top page and the menu item*/
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: 15px;
-    margin-left: 15px;
+/*position the text inside the banner images*/
+.inside-container {
+    position: relative;
+    width: 50%;
+    max-width: 500px;
+    left: 90px;
+    top: 30%;
+    padding: 10px 20px;
 }
 
-/*.navbar-fixed-top {
-    top: 25px;
-}*/
-/*.navbar-header {
-    margin-top: 25px;
-}*/
+
+
