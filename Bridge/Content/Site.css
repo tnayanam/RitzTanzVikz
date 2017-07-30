@@ -2,6 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: "Rajdhani", Helvetica, Arial, sans-serif;
+    background-color:#fefbf0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,4 +23,10 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/*changing the background colout for menu*/
+.navbar-inverse {
+     background-color: #fefbf0; 
+     border-color: #fefbf0; 
 }
