@@ -30,3 +30,29 @@ textarea {
      background-color: #fefbf0; 
      border-color: #fefbf0; 
 }
+
+/*logo size*/
+.navbar-brand{
+    font-size:30px;
+}
+
+/*change in colour for the menu items and main logo*/
+.navbar-inverse .navbar-brand {
+    color: #6a6967;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #6a6967;
+}
+
+/*spacing between top page and the menu item*/
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.navbar-fixed-top {
+    top: 25px;
+}
