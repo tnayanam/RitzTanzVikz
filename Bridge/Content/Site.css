@@ -54,5 +54,8 @@ textarea {
 }
 
 .navbar-fixed-top {
-    top: 25px;
+    margin-top: 25px;
 }
+/*.navbar-header {
+    margin-top: 25px;
+}*/
