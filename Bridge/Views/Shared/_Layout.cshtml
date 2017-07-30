@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+    <link href="~/Content/superslides.css" rel="stylesheet" />
+
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -41,6 +43,36 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.superslides.js"></script>
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
+@*<script>
+    $('#slides').superslides();
+    
+
+
+</script>*@
+@*<script>
+    $.fn.superslides.fx = $.extend({
+        flip: function (orientation, complete) {
+            console.log(orientation);
+            complete();
+        }
+    }, $.fn.superslides.fx);
+</script>*@
+<script>
+    $(document).ready(function () {
+        $('#slides').superslides({
+            //slide_easing: 'easeInOutCubic',
+            //slide_speed: 800,
+            //pagination: true,
+            //hashchange: true,
+            //scrollable: true,
+            play: 4000
+        });
+    });
+</script>
+
+
