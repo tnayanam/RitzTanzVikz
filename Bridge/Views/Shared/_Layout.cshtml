@@ -36,10 +36,18 @@
     <div class="container-fluid body-content">
         @RenderBody()
         <hr />
-        <footer>
-            @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
-        </footer>
-    </div>
+
+        <footer class="Footer">
+            @*<div class="Footer-inner clear">
+                <div class="sqs-layout sqs-grid-12 columns-12 Footer-blocks Footer-blocks--top sqs-alternate-block-style-container" data-layout-label="Footer Top Blocks" data-type="block-field" data-updated-on="1498063883873" id="footerBlocksTop">
+                   
+                </div>
+            </div>*@
+            </footer>
+            @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -48,32 +56,23 @@
 
 </body>
 </html>
-@*<script>
-    $('#slides').superslides();
-    
-
-
-</script>*@
-@*<script>
-    $.fn.superslides.fx = $.extend({
-        flip: function (orientation, complete) {
-            console.log(orientation);
-            complete();
-        }
-    }, $.fn.superslides.fx);
-</script>*@
+@* script file for banner movement *@
 <script>
     $(document).ready(function () {
         $('#slides').superslides({
-            //slide_easing: 'easeInOutCubic',
-            //slide_speed: 800,
-            //pagination: true,
-            //hashchange: true,
-            //scrollable: true,
+            slide_easing: 'easeInOutCubic',
+            scrollable: false,
             animation: 'fade',
             play: 6000
         });
     });
 </script>
 
+<script>
+    $(function () {
+            $('[data-admin-menu]').hover(function () {
+            $('[data-admin-menu]').toggleClass('open')
+                });
+        });
+</script>
 

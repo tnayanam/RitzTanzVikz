@@ -37,7 +37,7 @@
   right: 0;
 }
 
-.slides-pagination {
+/*.slides-pagination {
   position: absolute;
   z-index: 3;
   bottom: 0;
@@ -62,4 +62,4 @@
 }
 .slides-pagination a.current {
   background: #222;
-}
+}*/

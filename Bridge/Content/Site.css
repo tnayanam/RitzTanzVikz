@@ -34,7 +34,6 @@ textarea {
 .navbar-inverse .navbar-brand {
     color: #6a6967;
 }
-
 .navbar-inverse .navbar-nav > li > a {
     color: #6a6967;
 }
@@ -49,5 +48,50 @@ textarea {
     padding: 10px 20px;
 }
 
+/*change the height of the image in the banner*/
+/*li {
+    height: 80% !important;
+}*/
 
+/*fix the top nav bar distance from the left side of the screen*/
+.container {
+    margin-left: 3%;
+}
 
+/*Footer styling*/
+/*.tweak-footer-show .Footer {
+    display: block;
+}
+
+.Footer {
+    background-color: #191606;
+    -webkit-font-smoothing: antialiased;
+}*/
+
+/*.clear:after {
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    content: ".";
+}
+
+.Footer-inner {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 75px 40px;
+}
+.tweak-site-width-option-full-background .Header-inner, .tweak-site-width-option-full-background .Intro-content, .tweak-site-width-option-full-background .Main-content, .tweak-site-width-option-full-background .Footer-inner, .tweak-site-width-option-full-background .Index-page-content {
+    max-width: 1700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tweak-footer-layout-stacked .Footer-blocks--top {
+    padding-bottom: 20px;
+}
+.Footer-blocks {
+    color: #fff;
+}*/
