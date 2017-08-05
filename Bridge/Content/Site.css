@@ -95,3 +95,12 @@ textarea {
 .Footer-blocks {
     color: #fff;
 }*/
+
+/*hover effect on the menu items*/
+.navbar-inverse .navbar-brand:hover{
+    color: #191606;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #191606;
+}
