@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
 
@@ -57,11 +58,11 @@ namespace Bridge
                appId: "689574294586754",
          appSecret: "bee708e0560618b20ac8a8d62b0d95f8");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "661759593574-u2ta0n6nriapaeldjqjgbrkrnpfe0q6d.apps.googleusercontent.com",
+                ClientSecret = "khqPe3GElUJfFo8zrcoBZKrR"
+            });
         }
     }
 }
