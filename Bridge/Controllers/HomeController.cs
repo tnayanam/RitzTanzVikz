@@ -10,6 +10,10 @@ namespace Bridge.Controllers
     {
         public ActionResult Index()
         {
+            if (Request.IsAuthenticated)
+            {
+                return View("IndexL");
+            }
             return View();
         }
 

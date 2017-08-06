@@ -221,6 +221,7 @@
     <Content Include="Content\Images\d.jpeg" />
     <Content Include="Content\Images\c.jpeg" />
     <Content Include="Content\Images\f.jpeg" />
+    <Content Include="Content\Images\g.jpg" />
     <Content Include="Scripts\jquery.superslides.js" />
     <Content Include="Content\superslides.css" />
     <Content Include="favicon.ico" />
@@ -280,6 +281,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Sent.cshtml" />
     <Content Include="Views\Account\ShowMsg.cshtml" />
+    <Content Include="Views\Shared\_LoggedInLayout.cshtml" />
+    <Content Include="Views\Home\IndexL.cshtml" />
+    <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
