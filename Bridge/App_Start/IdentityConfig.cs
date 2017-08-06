@@ -1,25 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
+﻿using Bridge.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Bridge.Models;
+using System;
+using System.Net.Mail;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Bridge
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+
+            MailMessage email = new MailMessage(new MailAddress("noreply@myproject.com", "(do not reply)"),
+                new MailAddress(message.Destination));
+
+            email.Subject = message.Subject;
+            email.Body = message.Body;
+
+            email.IsBodyHtml = true;
+
+            using (var mailClient = new Bridge.Models.GmailEmailService())
+            {
+                //In order to use the original from email address, uncomment this line:
+                //email.From = new MailAddress(mailClient.UserName, "(do not reply)");
+
+                await mailClient.SendMailAsync(email);
+            }
+
         }
     }
 
@@ -40,7 +52,7 @@ namespace Bridge
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -81,7 +93,7 @@ namespace Bridge
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;

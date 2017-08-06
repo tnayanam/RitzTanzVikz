@@ -27,7 +27,7 @@ namespace Bridge.Controllers
             return View();
         }
         //email
-
+        // ToDo: need to make ie secure
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Contact(EmailFormModel model)
@@ -36,8 +36,8 @@ namespace Bridge.Controllers
             {
                 var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
                 var message = new MailMessage();
-                message.To.Add(new MailAddress(model.FromEmail));  // replace with valid value 
-                message.From = new MailAddress("nayatanuj@gmail.com");  // replace with valid value
+                message.To.Add(new MailAddress("consultancybridgehelp@gmail.com"));  // replace with valid value 
+                message.From = new MailAddress(model.FromEmail);  // replace with valid value
                 message.Subject = "Your email subject";
                 message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
                 message.IsBodyHtml = true;
@@ -46,8 +46,8 @@ namespace Bridge.Controllers
                 {
                     var credential = new NetworkCredential
                     {
-                        UserName = "nayatanuj@gmail.com",  // replace with valid value
-                        Password = "PASSWORD OF GMAIL"  // replace with valid value
+                        UserName = "consultancybridgehelp@gmail.com",  // replace with valid value
+                        Password = "CBridge_007"  // replace with valid value
                     };
                     smtp.Credentials = credential;
                     smtp.Host = "smtp.gmail.com";
