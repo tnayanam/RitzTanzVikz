@@ -26,7 +26,7 @@ namespace Bridge.Controllers
 
             return View();
         }
-
+        //email
 
         [HttpPost]
         [ValidateAntiForgeryToken]
