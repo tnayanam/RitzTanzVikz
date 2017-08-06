@@ -66,3 +66,21 @@ textarea {
     vertical-align: middle;
 }*/
 
+/*create spaces between button in my account section*/
+.setBtnMargin{
+    margin: 3px;
+    }
+
+/*adding a min container and will be putting rows inside it. added space so that it does not coincide with the main header/logo*/
+.main-container{
+    margin-top:40px;
+}
+
+.account-menu li {
+    background: #515d6b;
+    border-radius: 2px;
+    margin-bottom: 1px;
+    border-left: 2px solid #2e353e;
+}
+
+

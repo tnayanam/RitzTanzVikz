@@ -33,12 +33,14 @@
         </div>
     </div>
     <div class="container-fluid body-content">
-        <div class="row">
-            <div class="col-lg-3 col-lg-offset-3">
-                @Html.Partial("_LeftNavPartial")
-            </div>
-            <div class="col-lg-6">
-                @RenderBody()
+        <div class="main-container">
+            <div class="row">
+                <div class="col-lg-3 account-menu">
+                    @Html.Partial("_LeftNavPartial")
+                </div>
+                <div class="col-lg-9">
+                    @RenderBody()
+                </div>
             </div>
         </div>
         <hr />
@@ -64,9 +66,9 @@
 
 <script>
     $(function () {
-            $('[data-admin-menu]').hover(function () {
+        $('[data-admin-menu]').hover(function () {
             $('[data-admin-menu]').toggleClass('open')
-                });
         });
+    });
 </script>
 

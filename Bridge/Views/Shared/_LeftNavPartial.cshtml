@@ -1,11 +1,21 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    <ul>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        </ul>
+    <ul style="list-style-type:none;">
+        <li class="active setBtnMargin">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">My Resume </a>
+        </li>
+        <li class="setBtnMargin">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">My Cover Letter </a>
+        </li>
+        <li class="setBtnMargin">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">My Account </a>
+
+        </li>
+        <li class="setBtnMargin">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">Get Rewards </a>
+        </li>
+    </ul>
 }
 
 
