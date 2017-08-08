@@ -165,3 +165,4 @@ C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug
 C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.InitialCreate.resources
 C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.csproj.GenerateResource.Cache
 C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.testting.resources
+C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.addedfieldtoresumeclass.resources

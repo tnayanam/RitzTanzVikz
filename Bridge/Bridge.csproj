@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +212,10 @@
     <Compile Include="Migrations\201708080735303_testting.cs" />
     <Compile Include="Migrations\201708080735303_testting.Designer.cs">
       <DependentUpon>201708080735303_testting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708080804503_added field to resume class.cs" />
+    <Compile Include="Migrations\201708080804503_added field to resume class.Designer.cs">
+      <DependentUpon>201708080804503_added field to resume class.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -294,6 +299,8 @@
     <Content Include="Views\Shared\_LoggedInLayout.cshtml" />
     <Content Include="Views\Home\IndexL.cshtml" />
     <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
+    <Content Include="Views\Resume\Index.cshtml" />
+    <Content Include="Views\Resume\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708080735303_testting.resx">
       <DependentUpon>201708080735303_testting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708080804503_added field to resume class.resx">
+      <DependentUpon>201708080804503_added field to resume class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
