@@ -46,7 +46,8 @@ namespace Bridge.Controllers
                             FileName = System.IO.Path.GetFileName(uploadedResume.FileName),
                             ContentType = uploadedResume.ContentType,
                             ResumeName = resume.ResumeName,
-                            UserId = User.Identity.GetUserId()
+                            UserId = User.Identity.GetUserId(),
+                            datetime = System.DateTime.Now
                         };
                         using (var reader = new System.IO.BinaryReader(uploadedResume.InputStream))
                         {
@@ -72,6 +73,14 @@ namespace Bridge.Controllers
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             fileRes.FileDownloadName = temp.FileName;
             return fileRes;
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            var r = _context.Resumes.Where(c => c.Id == id);
+            _context.Resumes.RemoveRange(r);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

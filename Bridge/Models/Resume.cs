@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bridge.Models
@@ -13,7 +14,9 @@ namespace Bridge.Models
         [StringLength(100)]
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
-
+        [Display(Name = "Date Uploaded")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTime datetime { get; set; }
         public string UserId { get; set; }
 
         [ForeignKey("UserId")]

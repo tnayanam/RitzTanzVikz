@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201708080804503_added field to resume class.Designer.cs">
       <DependentUpon>201708080804503_added field to resume class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708090300121_er.cs" />
+    <Compile Include="Migrations\201708090300121_er.Designer.cs">
+      <DependentUpon>201708090300121_er.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
@@ -322,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708080804503_added field to resume class.resx">
       <DependentUpon>201708080804503_added field to resume class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708090300121_er.resx">
+      <DependentUpon>201708090300121_er.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

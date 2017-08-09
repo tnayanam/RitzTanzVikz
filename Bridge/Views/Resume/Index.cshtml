@@ -14,6 +14,10 @@
         <th>
             @Html.DisplayNameFor(model => model.ResumeName)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.datetime)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +25,9 @@
     <tr>
         <td>
             <a href="@Url.Action("Details", "Resume", new { id = @item.Id})">@Html.DisplayFor(modelItem => item.ResumeName)</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datetime)
         </td>
         <td>
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
