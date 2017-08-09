@@ -1,5 +1,7 @@
 ﻿using Bridge.Models;
+using Microsoft.AspNet.Identity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,7 +20,9 @@ namespace Bridge.Controllers
         // GET: Resume
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var resumeList = _context.Resumes.Where(r => r.UserId == userId).ToList();
+            return View(resumeList);
         }
 
         public ActionResult Create()
@@ -30,6 +34,7 @@ namespace Bridge.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Resume resume, HttpPostedFileBase uploadedResume)
         {
+            var x = User.Identity.GetUserId();
             try
             {
                 if (ModelState.IsValid)
@@ -40,7 +45,8 @@ namespace Bridge.Controllers
                         {
                             FileName = System.IO.Path.GetFileName(uploadedResume.FileName),
                             ContentType = uploadedResume.ContentType,
-                            ResumeName = resume.ResumeName
+                            ResumeName = resume.ResumeName,
+                            UserId = User.Identity.GetUserId()
                         };
                         using (var reader = new System.IO.BinaryReader(uploadedResume.InputStream))
                         {
@@ -58,6 +64,14 @@ namespace Bridge.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
             return View("Index");
+        }
+
+        public FileContentResult Details(int? id)
+        {
+            var temp = _context.Resumes.Where(f => f.Id == id).SingleOrDefault();
+            var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
+            fileRes.FileDownloadName = temp.FileName;
+            return fileRes;
         }
     }
 }

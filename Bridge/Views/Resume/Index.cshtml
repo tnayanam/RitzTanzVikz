@@ -1,3 +1,31 @@
-﻿<div>
-    @Html.ActionLink("Upload Resume", "Create")
-</div>
+﻿@model IEnumerable<Bridge.Models.Resume>
+
+@*@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>*@
+
+<p>
+    @Html.ActionLink("Upload Reume", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResumeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@Url.Action("Details", "Resume", new { id = @item.Id})">@Html.DisplayFor(modelItem => item.ResumeName)</a>
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
