@@ -167,3 +167,8 @@ C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug
 C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.testting.resources
 C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.addedfieldtoresumeclass.resources
 C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.er.resources
+C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.Addedcoverletterdb.resources
+C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.minorupdate.resources
+C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations._as.resources
+C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.addedcompanymodel.resources
+C:\Users\lenovo\Desktop\ConsultancyBridge\Project1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.addedskillmodel.resources

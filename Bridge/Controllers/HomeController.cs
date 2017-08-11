@@ -12,7 +12,7 @@ namespace Bridge.Controllers
         {
             if (Request.IsAuthenticated)
             {
-                return View("IndexL");
+                return RedirectToAction("Index", "Resume");
             }
             return View();
         }

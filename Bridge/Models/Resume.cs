@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bridge.Models
 {
@@ -17,9 +16,8 @@ namespace Bridge.Models
         [Display(Name = "Date Uploaded")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime datetime { get; set; }
-        public string UserId { get; set; }
 
-        [ForeignKey("UserId")]
+        public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
     }

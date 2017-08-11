@@ -199,12 +199,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoverLetterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\JobApplicationController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ActiveMenuHelper.cs" />
     <Compile Include="Migrations\201708051512447_InitialCreate.cs" />
     <Compile Include="Migrations\201708051512447_InitialCreate.Designer.cs">
       <DependentUpon>201708051512447_InitialCreate.cs</DependentUpon>
@@ -221,13 +224,37 @@
     <Compile Include="Migrations\201708090300121_er.Designer.cs">
       <DependentUpon>201708090300121_er.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708092343357_Added coverletter db.cs" />
+    <Compile Include="Migrations\201708092343357_Added coverletter db.Designer.cs">
+      <DependentUpon>201708092343357_Added coverletter db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708100009552_minorupdate.cs" />
+    <Compile Include="Migrations\201708100009552_minorupdate.Designer.cs">
+      <DependentUpon>201708100009552_minorupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708100033558_as.cs" />
+    <Compile Include="Migrations\201708100033558_as.Designer.cs">
+      <DependentUpon>201708100033558_as.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708110054044_added company model.cs" />
+    <Compile Include="Migrations\201708110054044_added company model.Designer.cs">
+      <DependentUpon>201708110054044_added company model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708110056154_added skill model.cs" />
+    <Compile Include="Migrations\201708110056154_added skill model.Designer.cs">
+      <DependentUpon>201708110056154_added skill model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\JobApplication.cs" />
+    <Compile Include="Models\CoverLetter.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\GmailEmailService.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Resume.cs" />
+    <Compile Include="Models\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -305,9 +332,12 @@
     <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
     <Content Include="Views\Resume\Index.cshtml" />
     <Content Include="Views\Resume\Create.cshtml" />
+    <Content Include="Views\CoverLetter\Create.cshtml" />
+    <Content Include="Views\CoverLetter\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Referral\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -329,6 +359,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708090300121_er.resx">
       <DependentUpon>201708090300121_er.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708092343357_Added coverletter db.resx">
+      <DependentUpon>201708092343357_Added coverletter db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708100009552_minorupdate.resx">
+      <DependentUpon>201708100009552_minorupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708100033558_as.resx">
+      <DependentUpon>201708100033558_as.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708110054044_added company model.resx">
+      <DependentUpon>201708110054044_added company model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708110056154_added skill model.resx">
+      <DependentUpon>201708110056154_added skill model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

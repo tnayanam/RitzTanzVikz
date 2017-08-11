@@ -1,21 +1,16 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Bridge.Helpers
 @if (Request.IsAuthenticated)
 {
     <ul style="list-style-type:none;">
-        <li class="active setBtnMargin">
-            <a href="@Url.Action("Index", "Resume")" class="btn btn-primary btn-block">My Resume </a>
-        </li>
-        <li class="setBtnMargin">
-            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">My Cover Letter </a>
-        </li>
-        <li class="setBtnMargin">
-            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">My Account </a>
-
-        </li>
-        <li class="setBtnMargin">
-            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">Get Rewards </a>
-        </li>
-    </ul>
+        @Html.MenuLink("Resume Center", "Index", "Resume", "")
+        @Html.MenuLink("Coverletter Center", "Index", "CoverLetter", "")
+        @Html.MenuLink("Referral", "Index", "Referral", "")
+        @*@Html.MenuLink("Resume Center", "Index", "Resume", "")
+        @Html.MenuLink("Resume Center","Index", "Resume", "")*@
+     </ul>
 }
+
+
 
 

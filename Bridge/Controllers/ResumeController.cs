@@ -21,7 +21,7 @@ namespace Bridge.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var resumeList = _context.Resumes.Where(r => r.UserId == userId).ToList();
+            var resumeList = _context.Resumes.Where(r => r.UserId == userId).OrderByDescending(r => r.datetime).ToList();
             return View(resumeList);
         }
 
