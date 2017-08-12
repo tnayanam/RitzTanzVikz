@@ -1,0 +1,11 @@
+﻿@model Bridge.ViewModels.ReferralViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.CompanyId)
+    @Html.DropDownListFor(m => m.CompanyId, new SelectList(Model.Companies, "Id", "Name", Model.CompanyId), new { @class = "form-control" })
+</div>

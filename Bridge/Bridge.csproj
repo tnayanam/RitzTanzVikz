@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -201,8 +203,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoverLetterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReferralController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\JobApplicationController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,14 +246,23 @@
     <Compile Include="Migrations\201708110056154_added skill model.Designer.cs">
       <DependentUpon>201708110056154_added skill model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708110504139_new.cs" />
+    <Compile Include="Migrations\201708110504139_new.Designer.cs">
+      <DependentUpon>201708110504139_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708110541563_sd.cs" />
+    <Compile Include="Migrations\201708110541563_sd.Designer.cs">
+      <DependentUpon>201708110541563_sd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\JobApplication.cs" />
+    <Compile Include="Models\Referral.cs" />
     <Compile Include="Models\CoverLetter.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\GmailEmailService.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ViewModel\ReferralViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Resume.cs" />
     <Compile Include="Models\Skill.cs" />
@@ -334,10 +345,10 @@
     <Content Include="Views\Resume\Create.cshtml" />
     <Content Include="Views\CoverLetter\Create.cshtml" />
     <Content Include="Views\CoverLetter\Index.cshtml" />
+    <Content Include="Views\Referral\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Referral\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -374,6 +385,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708110056154_added skill model.resx">
       <DependentUpon>201708110056154_added skill model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708110504139_new.resx">
+      <DependentUpon>201708110504139_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708110541563_sd.resx">
+      <DependentUpon>201708110541563_sd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
