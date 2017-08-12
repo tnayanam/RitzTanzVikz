@@ -266,3 +266,4 @@ C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.dll
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.pdb
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations._new.resources
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.sd.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.degreemodel.resources

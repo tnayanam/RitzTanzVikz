@@ -254,9 +254,14 @@
     <Compile Include="Migrations\201708110541563_sd.Designer.cs">
       <DependentUpon>201708110541563_sd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708120218546_degree model.cs" />
+    <Compile Include="Migrations\201708120218546_degree model.Designer.cs">
+      <DependentUpon>201708120218546_degree model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Referral.cs" />
     <Compile Include="Models\CoverLetter.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
@@ -391,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708110541563_sd.resx">
       <DependentUpon>201708110541563_sd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708120218546_degree model.resx">
+      <DependentUpon>201708120218546_degree model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

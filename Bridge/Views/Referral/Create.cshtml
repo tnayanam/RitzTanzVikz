@@ -1,11 +1,65 @@
 ﻿@model Bridge.ViewModels.ReferralViewModel
+
 @{
     ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
 
-<div class="form-group">
-    @Html.LabelFor(m => m.CompanyId)
-    @Html.DropDownListFor(m => m.CompanyId, new SelectList(Model.Companies, "Id", "Name", Model.CompanyId), new { @class = "form-control" })
-</div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ReferralViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.CompanyId, new SelectList(Model.Companies, "Id", "Name", Model.CompanyId), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SkillId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.SkillId, new SelectList(Model.Skills, "Id", "Name", Model.Skills), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SkillId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DegreeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.DegreeId, new SelectList(Model.Degrees, "Id", "Name", Model.Degrees), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DegreeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Experience, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ResumeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.ResumeId, new SelectList(Model.Resumes, "Id", "ResumeName", Model.Resumes), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

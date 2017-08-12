@@ -28,6 +28,7 @@ namespace Bridge.Models
         public DbSet<Company> Companies { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Referral> Referrals { get; set; }
+        public DbSet<Degree> Degrees { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
