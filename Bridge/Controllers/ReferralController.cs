@@ -17,7 +17,13 @@ namespace Bridge.Controllers
         // GET: Referral
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var viewModel = _context.Referrals
+                  .Include("Company")
+                  .Include("Resume")
+                  .Where(r => r.UserId == userId)
+                  .ToList();
+            return View(viewModel);
         }
 
         public ActionResult Create()
@@ -39,9 +45,15 @@ namespace Bridge.Controllers
             var userId = User.Identity.GetUserId();
             var referral = new Referral
             {
-
-            }
-            return View(viewModel);
+                CompanyId = viewModel.CompanyId,
+                DegreeId = viewModel.DegreeId,
+                ReferralName = viewModel.ReferralName,
+                ResumeId = viewModel.ResumeId,
+                UserId = userId
+            };
+            _context.Referrals.Add(referral);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }

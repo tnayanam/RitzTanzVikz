@@ -3,11 +3,9 @@
 @if (Request.IsAuthenticated)
 {
     <ul style="list-style-type:none;">
-        @Html.MenuLink("Resume Center", "Index", "Resume", "")
-        @Html.MenuLink("Coverletter Center", "Index", "CoverLetter", "")
-        @Html.MenuLink("Referral", "Index", "Referral", "")
-        @*@Html.MenuLink("Resume Center", "Index", "Resume", "")
-        @Html.MenuLink("Resume Center","Index", "Resume", "")*@
+        @Html.MenuLink("Resume Center", "Index", "Resume", null, new { @class = "btn btn-block"})
+        @Html.MenuLink("Coverletter Center", "Index", "CoverLetter", null, new { @class = "btn btn-block" })
+        @Html.MenuLink("Referral", "Index", "Referral", null, new { @class = "btn btn-block" })
      </ul>
 }
 

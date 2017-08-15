@@ -12,6 +12,8 @@ namespace Bridge.Models
     {
         public ICollection<Resume> Resumes { get; set; }
         public ICollection<CoverLetter> CoverLetters { get; set; }
+
+        public string SelectedRoleType { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -55,6 +57,10 @@ namespace Bridge.Models
                  .HasForeignKey(u => u.UserId)
                  .WillCascadeOnDelete(false);
 
+            dBModelBuilder.Entity<Referral>()
+                .HasRequired(a => a.Company)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
             base.OnModelCreating(dBModelBuilder);
 

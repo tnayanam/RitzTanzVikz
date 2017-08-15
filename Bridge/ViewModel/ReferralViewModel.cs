@@ -16,5 +16,10 @@ namespace Bridge.ViewModels
         public int DegreeId { get; set; }
         public int Experience { get; set; }
         public int ResumeId { get; set; }
+        public string ReferralName { get; set; }
+        public string CompanyName { get; set; }
+        public string SkillName { get; set; }
+        public string DegreeName { get; set; }
+        public string ResumeName { get; set; }
     }
 }

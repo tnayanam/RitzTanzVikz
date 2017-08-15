@@ -267,3 +267,10 @@ C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.pdb
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations._new.resources
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.sd.resources
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.degreemodel.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.referralmodelupdate.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.referral.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.referrals.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asr.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asras.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asrhjg.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.userrole.resources
