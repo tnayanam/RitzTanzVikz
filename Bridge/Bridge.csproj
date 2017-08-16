@@ -205,7 +205,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReferralController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReferrerController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -380,6 +382,11 @@
     <Content Include="Views\CoverLetter\Index.cshtml" />
     <Content Include="Views\Referral\Create.cshtml" />
     <Content Include="Views\Referral\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Shared\_ReferrerLayout.cshtml" />
+    <Content Include="Views\Shared\_LeftNavReferrerPartial.cshtml" />
+    <Content Include="Views\Referrer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNet.Identity
+@using Bridge.Helpers
+@if (Request.IsAuthenticated)
+{
+    <ul style="list-style-type:none;">
+        @Html.MenuLink("Refer Candidate", "Index", "Resume", null, new { @class = "btn btn-block" })
+        @Html.MenuLink("MyRewards", "Index", "CoverLetter", null, new { @class = "btn btn-block" })
+        @*@Html.MenuLink("Referral", "Index", "Referral", null, new { @class = "btn btn-block" })*@
+    </ul>
+}
+
+
+
+

@@ -1,6 +1,5 @@
 ﻿using Bridge.Models;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
@@ -154,15 +153,20 @@ namespace Bridge.Controllers
                 if (result.Succeeded)
                 {
 
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("JobSeeker"));
+                    //   var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    // var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    // await roleManager.CreateAsync(new IdentityRole("JobSeeker"));
 
 
                     if (model.SelectedRoleType == "JobSeeker")
                     {
-                        await UserManager.AddToRoleAsync(user.Id, "JobSeeker");
+                        await UserManager.AddToRoleAsync(user.Id, "Candidate");
                     }
+                    else if (model.SelectedRoleType == "Referrer")
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, "Referrer");
+                    }
+                    else { }
 
 
                     // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
