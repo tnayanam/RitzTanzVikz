@@ -29,12 +29,19 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group js-radioOnChange">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.RadioButtonFor(m => m.SelectedRoleType, "JobSeeker") Job Seeker
-            @Html.RadioButtonFor(m => m.SelectedRoleType,"Referrer") Referrar
+            @Html.RadioButtonFor(m => m.SelectedRoleType, "JobSeeker", new { @class="js-radio"}) Job Seeker
+            @Html.RadioButtonFor(m => m.SelectedRoleType,"Referrer", new { @class="js-radio"}) Referrar
         </div>
+    </div>
+    <div class="form-group js-referrer" style="display:none;">
+        @Html.LabelFor(m => m.CompanyName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control"})
+        </div>
+        @Html.ValidationMessageFor(m => m.CompanyName)
     </div>
 
     <div class="form-group">
@@ -53,3 +60,19 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script src="~/Scripts/mvcfoolproof.unobtrusive.js"></script>
+<script>
+    $('.js-radioOnChange').on('change', function () {
+        if($('input[name=SelectedRoleType]:checked').val() == "Referrer")
+        {
+            $('.js-referrer').show();
+            $('.js-referrer input').attr('required', 'required');
+            $('.js-required').attr('required', true);
+        }
+        else {
+            $('.js-referrer').hide();
+        }
+    });
+
+</script>

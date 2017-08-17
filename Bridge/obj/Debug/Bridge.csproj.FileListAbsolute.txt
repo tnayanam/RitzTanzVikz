@@ -274,3 +274,4 @@ C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asras.resources
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asrhjg.resources
 C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.userrole.resources
+C:\Users\lenovo\Desktop\11thaug\RitzTanzVikz\Bridge\bin\FoolproofValidation.dll
