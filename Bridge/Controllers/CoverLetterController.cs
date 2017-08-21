@@ -18,10 +18,10 @@ namespace Bridge.Controllers
         }
 
         // GET: Resume
-        public ActionResult Index()
+        public ActionResult CoverLetterCenter()
         {
             var userId = User.Identity.GetUserId();
-            var coverLetterList = _context.CoverLetters.Where(r => r.UserId == userId).OrderByDescending(r => r.datetime).ToList();
+            var coverLetterList = _context.CoverLetters.Where(r => r.CandidateId == userId).OrderByDescending(r => r.datetime).ToList();
             return View(coverLetterList);
         }
 
@@ -46,7 +46,7 @@ namespace Bridge.Controllers
                             FileName = System.IO.Path.GetFileName(uploadedCoverLetter.FileName),
                             ContentType = uploadedCoverLetter.ContentType,
                             CoverLetterName = coverLetter.CoverLetterName,
-                            UserId = User.Identity.GetUserId(),
+                            CandidateId = User.Identity.GetUserId(),
                             datetime = System.DateTime.Now
                         };
                         using (var reader = new System.IO.BinaryReader(uploadedCoverLetter.InputStream))
@@ -56,7 +56,7 @@ namespace Bridge.Controllers
                         _context.CoverLetters.Add(tempcoverletter);
                     }
                     _context.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("CoverLetterCenter");
                 }
             }
             catch (RetryLimitExceededException /* dex */)
@@ -67,20 +67,22 @@ namespace Bridge.Controllers
             return View("Index");
         }
 
-        public FileContentResult Details(int? id)
+        public FileContentResult Details(int? coverLetterId)
         {
-            var temp = _context.CoverLetters.Where(f => f.Id == id).SingleOrDefault();
+            var temp = _context.CoverLetters.Where(f => f.CoverLetterId == coverLetterId).SingleOrDefault();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             fileRes.FileDownloadName = temp.FileName;
             return fileRes;
         }
 
-        public ActionResult Delete(int? id)
+        //[HttpPost]
+        // ToDo Need to make it a post request
+        public ActionResult Delete(int? coverLetterId)
         {
-            var r = _context.CoverLetters.Where(c => c.Id == id);
+            var r = _context.CoverLetters.Where(c => c.CoverLetterId == coverLetterId);
             _context.CoverLetters.RemoveRange(r);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("CoverLetterCenter");
         }
     }
 

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Bridge.Controllers
 {
-    [Authorize(Roles = "Candidate")]
+    //[Authorize(Roles = "Candidate")]
     public class ResumeController : Controller
     {
 
@@ -19,10 +19,10 @@ namespace Bridge.Controllers
         }
 
         // GET: Resume
-        public ActionResult Index()
+        public ActionResult ResumeCenter()
         {
-            var userId = User.Identity.GetUserId();
-            var resumeList = _context.Resumes.Where(r => r.UserId == userId).OrderByDescending(r => r.datetime).ToList();
+            var candidateId = User.Identity.GetUserId();
+            var resumeList = _context.Resumes.Where(r => r.CandidateId == candidateId).OrderByDescending(r => r.datetime).ToList();
             return View(resumeList);
         }
 
@@ -35,7 +35,6 @@ namespace Bridge.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Resume resume, HttpPostedFileBase uploadedResume)
         {
-            var x = User.Identity.GetUserId();
             try
             {
                 if (ModelState.IsValid)
@@ -47,7 +46,7 @@ namespace Bridge.Controllers
                             FileName = System.IO.Path.GetFileName(uploadedResume.FileName),
                             ContentType = uploadedResume.ContentType,
                             ResumeName = resume.ResumeName,
-                            UserId = User.Identity.GetUserId(),
+                            CandidateId = User.Identity.GetUserId(),
                             datetime = System.DateTime.Now
                         };
                         using (var reader = new System.IO.BinaryReader(uploadedResume.InputStream))
@@ -57,7 +56,7 @@ namespace Bridge.Controllers
                         _context.Resumes.Add(tempresume);
                     }
                     _context.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ResumeCenter");
                 }
             }
             catch (RetryLimitExceededException /* dex */)
@@ -65,23 +64,24 @@ namespace Bridge.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View("Index");
+            return View("ResumeCenter");
         }
 
-        public FileContentResult Details(int? id)
+        public FileContentResult Details(int? resumeId)
         {
-            var temp = _context.Resumes.Where(f => f.Id == id).SingleOrDefault();
+            var temp = _context.Resumes.Where(f => f.ResumeId == resumeId).SingleOrDefault();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             fileRes.FileDownloadName = temp.FileName;
             return fileRes;
         }
 
-        public ActionResult Delete(int? id)
+        // Todo: Need to make it a POST Request
+        public ActionResult Delete(int? resumeId)
         {
-            var r = _context.Resumes.Where(c => c.Id == id);
+            var r = _context.Resumes.Where(c => c.ResumeId == resumeId);
             _context.Resumes.RemoveRange(r);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ResumeCenter");
         }
     }
 }

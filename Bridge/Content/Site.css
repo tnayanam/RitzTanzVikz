@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: "Rajdhani", Helvetica, Arial, sans-serif;
+    font-family: "Metrophobic", Helvetica, Arial, sans-serif;
     background-color:#fefbf0;
 }
 
@@ -50,7 +50,7 @@ textarea {
 
 /*fix the top nav bar distance from the left side of the screen*/
 .container {
-    margin-left: 3%;
+    margin-left: 1%;
 }
 
 /*hover effect on the menu items*/
@@ -76,13 +76,51 @@ textarea {
     margin-top:40px;
 }
 
+/*set colour for left nav menu*/
 .account-menu li {
-    background: #b6f122;
+    background: #428bca;
     border-radius: 2px;
     margin-bottom: 1px;
     border-left: 2px solid #2e353e;
 }
 
+/*set colour when men is active*/
 .active{
     background-color:#ff6a00 !important;
 }
+
+/*determines width of button text*/
+.btn-block {
+    color: #f7f7f7;
+    font-weight: 700;
+}
+
+.css-leftpad{
+    padding-left:5px;
+}
+
+/*color of left nav links*/
+.list-group-item {
+        background-color: #515d6b;
+}
+/*left padding for left menu items*/
+.col-lg-3.account-menu {
+    padding-left: 40px;
+      border-left: 2px solid #2e353e;
+}
+
+/*color for the men items in the left border-color*/
+
+a.list-group-item {
+    font-size: medium;
+    color: white;
+       border-left-color: #c1b1b1;
+    border-left-width: thick;
+    border-bottom-color:white;
+    border-bottom-width:medium;
+}
+
+a.list-group-item:hover, a.list-group-item:focus {
+    background-color: #357ebd;
+}
+ 

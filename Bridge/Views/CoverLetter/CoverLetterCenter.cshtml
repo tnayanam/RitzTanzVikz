@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Bridge.Models.CoverLetter>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CoverLetterName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.datetime)
+        </th>
+        <th><a href="@Url.Action("Create")" class="btn btn-primary btn-block">Upload Cover Letter </a></th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td colspan="4">No Cover Letters were found.</td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details", "CoverLetter", new { coverLetterId = @item.CoverLetterId})">@Html.DisplayFor(modelItem => item.CoverLetterName)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datetime)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { coverLetterId = @item.CoverLetterId }, new { @class = "js-popup" })
+                </td>
+                <td></td>
+            </tr>
+        }
+
+    }
+
+</table>
+
+@section Scripts
+{
+<script>
+    $('.js-popup').on('click', function () { return confirm('are you sure?'); });
+
+    </script>
+    @*<script>
+        $('.js-popup').on('click', function (e) {
+            if (confirm("Are you sure?") == true) {
+
+                $(function () {
+                        e.preventDefault();
+                        $.post($(this).attr("href"), function (data) {
+                            // got the result in data variable. do whatever you want now
+                            //may be reload the page
+                        });
+                });
+            } else {
+                txt = "You pressed Cancel!";
+            }
+        });
+    </script>*@
+}

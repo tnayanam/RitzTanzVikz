@@ -292,6 +292,122 @@
     <Compile Include="Migrations\201708150520548_user role.Designer.cs">
       <DependentUpon>201708150520548_user role.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708192103549_sd1.cs" />
+    <Compile Include="Migrations\201708192103549_sd1.Designer.cs">
+      <DependentUpon>201708192103549_sd1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192106262_we.cs" />
+    <Compile Include="Migrations\201708192106262_we.Designer.cs">
+      <DependentUpon>201708192106262_we.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192119029_wee.cs" />
+    <Compile Include="Migrations\201708192119029_wee.Designer.cs">
+      <DependentUpon>201708192119029_wee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192123132_werd.cs" />
+    <Compile Include="Migrations\201708192123132_werd.Designer.cs">
+      <DependentUpon>201708192123132_werd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192125406_werd1.cs" />
+    <Compile Include="Migrations\201708192125406_werd1.Designer.cs">
+      <DependentUpon>201708192125406_werd1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192132324_werd13.cs" />
+    <Compile Include="Migrations\201708192132324_werd13.Designer.cs">
+      <DependentUpon>201708192132324_werd13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192133572_werd133.cs" />
+    <Compile Include="Migrations\201708192133572_werd133.Designer.cs">
+      <DependentUpon>201708192133572_werd133.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192136470_werd132.cs" />
+    <Compile Include="Migrations\201708192136470_werd132.Designer.cs">
+      <DependentUpon>201708192136470_werd132.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192141309_rt1.cs" />
+    <Compile Include="Migrations\201708192141309_rt1.Designer.cs">
+      <DependentUpon>201708192141309_rt1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192148422_rt11.cs" />
+    <Compile Include="Migrations\201708192148422_rt11.Designer.cs">
+      <DependentUpon>201708192148422_rt11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192157309_asdtf.cs" />
+    <Compile Include="Migrations\201708192157309_asdtf.Designer.cs">
+      <DependentUpon>201708192157309_asdtf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192159490_asdtfse.cs" />
+    <Compile Include="Migrations\201708192159490_asdtfse.Designer.cs">
+      <DependentUpon>201708192159490_asdtfse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192202579_wqvfsr.cs" />
+    <Compile Include="Migrations\201708192202579_wqvfsr.Designer.cs">
+      <DependentUpon>201708192202579_wqvfsr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192213526_wqvaserewq.cs" />
+    <Compile Include="Migrations\201708192213526_wqvaserewq.Designer.cs">
+      <DependentUpon>201708192213526_wqvaserewq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192305380_wqvaqwer.cs" />
+    <Compile Include="Migrations\201708192305380_wqvaqwer.Designer.cs">
+      <DependentUpon>201708192305380_wqvaqwer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192308329_wqvaqwerqwer.cs" />
+    <Compile Include="Migrations\201708192308329_wqvaqwerqwer.Designer.cs">
+      <DependentUpon>201708192308329_wqvaqwerqwer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192315314_wqvaqasdf.cs" />
+    <Compile Include="Migrations\201708192315314_wqvaqasdf.Designer.cs">
+      <DependentUpon>201708192315314_wqvaqasdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192324146_wasdf.cs" />
+    <Compile Include="Migrations\201708192324146_wasdf.Designer.cs">
+      <DependentUpon>201708192324146_wasdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192327598_wasdfasdrw.cs" />
+    <Compile Include="Migrations\201708192327598_wasdfasdrw.Designer.cs">
+      <DependentUpon>201708192327598_wasdfasdrw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192344520_wasdfasdrabert.cs" />
+    <Compile Include="Migrations\201708192344520_wasdfasdrabert.Designer.cs">
+      <DependentUpon>201708192344520_wasdfasdrabert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708192348468_wasdfasdrabertwer.cs" />
+    <Compile Include="Migrations\201708192348468_wasdfasdrabertwer.Designer.cs">
+      <DependentUpon>201708192348468_wasdfasdrabertwer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708200020158_aer.cs" />
+    <Compile Include="Migrations\201708200020158_aer.Designer.cs">
+      <DependentUpon>201708200020158_aer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708201623214_sdf.cs" />
+    <Compile Include="Migrations\201708201623214_sdf.Designer.cs">
+      <DependentUpon>201708201623214_sdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708201625422_arwde.cs" />
+    <Compile Include="Migrations\201708201625422_arwde.Designer.cs">
+      <DependentUpon>201708201625422_arwde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708201733140_df3w.cs" />
+    <Compile Include="Migrations\201708201733140_df3w.Designer.cs">
+      <DependentUpon>201708201733140_df3w.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708201734115_df3ww.cs" />
+    <Compile Include="Migrations\201708201734115_df3ww.Designer.cs">
+      <DependentUpon>201708201734115_df3ww.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708201739023_df3wwasse.cs" />
+    <Compile Include="Migrations\201708201739023_df3wwasse.Designer.cs">
+      <DependentUpon>201708201739023_df3wwasse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708210200032_asdrqwevewr.cs" />
+    <Compile Include="Migrations\201708210200032_asdrqwevewr.Designer.cs">
+      <DependentUpon>201708210200032_asdrqwevewr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708210359548_asdrqwevewrjk.cs" />
+    <Compile Include="Migrations\201708210359548_asdrqwevewrjk.Designer.cs">
+      <DependentUpon>201708210359548_asdrqwevewrjk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
@@ -386,17 +502,17 @@
     <Content Include="Views\Shared\_LoggedInLayout.cshtml" />
     <Content Include="Views\Home\IndexL.cshtml" />
     <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
-    <Content Include="Views\Resume\Index.cshtml" />
+    <Content Include="Views\Resume\ResumeCenter.cshtml" />
     <Content Include="Views\Resume\Create.cshtml" />
     <Content Include="Views\CoverLetter\Create.cshtml" />
-    <Content Include="Views\CoverLetter\Index.cshtml" />
+    <Content Include="Views\CoverLetter\CoverLetterCenter.cshtml" />
     <Content Include="Views\Referral\Create.cshtml" />
-    <Content Include="Views\Referral\Index.cshtml" />
+    <Content Include="Views\Referral\ReferralCenter.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Shared\_ReferrerLayout.cshtml" />
     <Content Include="Views\Shared\_LeftNavReferrerPartial.cshtml" />
-    <Content Include="Views\Referrer\Index.cshtml" />
+    <Content Include="Views\Referrer\ReferrerCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -466,6 +582,93 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708150520548_user role.resx">
       <DependentUpon>201708150520548_user role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192103549_sd1.resx">
+      <DependentUpon>201708192103549_sd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192106262_we.resx">
+      <DependentUpon>201708192106262_we.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192119029_wee.resx">
+      <DependentUpon>201708192119029_wee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192123132_werd.resx">
+      <DependentUpon>201708192123132_werd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192125406_werd1.resx">
+      <DependentUpon>201708192125406_werd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192132324_werd13.resx">
+      <DependentUpon>201708192132324_werd13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192133572_werd133.resx">
+      <DependentUpon>201708192133572_werd133.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192136470_werd132.resx">
+      <DependentUpon>201708192136470_werd132.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192141309_rt1.resx">
+      <DependentUpon>201708192141309_rt1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192148422_rt11.resx">
+      <DependentUpon>201708192148422_rt11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192157309_asdtf.resx">
+      <DependentUpon>201708192157309_asdtf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192159490_asdtfse.resx">
+      <DependentUpon>201708192159490_asdtfse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192202579_wqvfsr.resx">
+      <DependentUpon>201708192202579_wqvfsr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192213526_wqvaserewq.resx">
+      <DependentUpon>201708192213526_wqvaserewq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192305380_wqvaqwer.resx">
+      <DependentUpon>201708192305380_wqvaqwer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192308329_wqvaqwerqwer.resx">
+      <DependentUpon>201708192308329_wqvaqwerqwer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192315314_wqvaqasdf.resx">
+      <DependentUpon>201708192315314_wqvaqasdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192324146_wasdf.resx">
+      <DependentUpon>201708192324146_wasdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192327598_wasdfasdrw.resx">
+      <DependentUpon>201708192327598_wasdfasdrw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192344520_wasdfasdrabert.resx">
+      <DependentUpon>201708192344520_wasdfasdrabert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192348468_wasdfasdrabertwer.resx">
+      <DependentUpon>201708192348468_wasdfasdrabertwer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708200020158_aer.resx">
+      <DependentUpon>201708200020158_aer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708201623214_sdf.resx">
+      <DependentUpon>201708201623214_sdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708201625422_arwde.resx">
+      <DependentUpon>201708201625422_arwde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708201733140_df3w.resx">
+      <DependentUpon>201708201733140_df3w.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708201734115_df3ww.resx">
+      <DependentUpon>201708201734115_df3ww.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708201739023_df3wwasse.resx">
+      <DependentUpon>201708201739023_df3wwasse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708210200032_asdrqwevewr.resx">
+      <DependentUpon>201708210200032_asdrqwevewr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708210359548_asdrqwevewrjk.resx">
+      <DependentUpon>201708210359548_asdrqwevewrjk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

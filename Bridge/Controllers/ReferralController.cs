@@ -15,46 +15,49 @@ namespace Bridge.Controllers
             _context = new ApplicationDbContext();
         }
         // GET: Referral
-        public ActionResult Index()
+        public ActionResult ReferralCenter()
         {
-            var userId = User.Identity.GetUserId();
+            var candidateId = User.Identity.GetUserId();
             var viewModel = _context.Referrals
-                  .Include("Company")
-                  .Include("Resume")
-                  .Where(r => r.UserId == userId)
-                  .ToList();
+                .Include("Company")
+                .Include("Resume")
+                .Include("CoverLetter")
+                .Where(r => r.CandidateId == candidateId).ToList();
+
             return View(viewModel);
         }
 
         public ActionResult Create()
         {
-            var userId = User.Identity.GetUserId();
+            var candidateId = User.Identity.GetUserId();
             var viewModel = new ReferralViewModel
             {
                 Companies = _context.Companies.ToList(),
                 Degrees = _context.Degrees.ToList(),
                 Skills = _context.Skills.ToList(),
-                Resumes = _context.Resumes.Where(r => r.UserId == userId).ToList()
+                Resumes = _context.Resumes.Where(r => r.CandidateId == candidateId).ToList(),
+                CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId).ToList()
             };
             return View(viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(ReferralViewModel viewModel)
         {
-            var userId = User.Identity.GetUserId();
+            var candidateId = User.Identity.GetUserId();
             var referral = new Referral
             {
                 CompanyId = viewModel.CompanyId,
-                DegreeId = viewModel.DegreeId,
                 ReferralName = viewModel.ReferralName,
                 ResumeId = viewModel.ResumeId,
-                UserId = userId
+                CandidateId = candidateId,
+                DegreeId = viewModel.DegreeId,
+                CoverLetterId = viewModel.CoverLetterId
             };
             _context.Referrals.Add(referral);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ReferralCenter");
         }
-
     }
 }

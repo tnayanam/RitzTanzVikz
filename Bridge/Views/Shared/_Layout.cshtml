@@ -4,17 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
     <link href="~/Content/superslides.css" rel="stylesheet" />
-
-    <script src="https://use.fontawesome.com/b2224b235f.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
-   
-    klklk
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -38,7 +34,6 @@
     <div class="container-fluid body-content">
         @RenderBody()
         <hr />
-
         <footer class="Footer">
             @*<div class="Footer-inner clear">
                 <div class="sqs-layout sqs-grid-12 columns-12 Footer-blocks Footer-blocks--top sqs-alternate-block-style-container" data-layout-label="Footer Top Blocks" data-type="block-field" data-updated-on="1498063883873" id="footerBlocksTop">
@@ -53,6 +48,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/jquery.superslides.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.js"></script>
+    <script src="https://use.fontawesome.com/b2224b235f.js"></script>
     @* script file for banner movement *@
     <script>
     $(document).ready(function () {
@@ -64,7 +61,6 @@
         });
     });
     </script>
-
     <script>
     $(function () {
             $('[data-admin-menu]').hover(function () {

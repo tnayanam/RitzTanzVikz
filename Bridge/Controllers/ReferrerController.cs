@@ -2,11 +2,11 @@
 
 namespace Bridge.Controllers
 {
-    [Authorize(Roles = "Referrer")]
+    //[Authorize(Roles = "Referrer")]
     public class ReferrerController : Controller
     {
         // GET: Referrer
-        public ActionResult Index()
+        public ActionResult ReferrerCenter()
         {
             return View();
         }

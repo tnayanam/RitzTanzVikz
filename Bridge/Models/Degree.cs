@@ -1,8 +1,11 @@
-﻿namespace Bridge.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Bridge.Models
 {
     public class Degree
     {
-        public int Id { get; set; }
+        [Key]
+        public int DegreeId { get; set; }
         public string Name { get; set; }
     }
 }

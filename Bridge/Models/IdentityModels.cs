@@ -12,6 +12,12 @@ namespace Bridge.Models
     {
         public ICollection<Resume> Resumes { get; set; }
         public ICollection<CoverLetter> CoverLetters { get; set; }
+        //public ICollection<Referral> Referrals { get; set; }
+        //public ICollection<Referral> ReferrerReferrals { get; set; }
+
+        public ICollection<Referral> ReferrerReferral { get; set; }
+        public ICollection<Referral> CandidateReferral { get; set; }
+
 
         public string SelectedRoleType { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -46,26 +52,52 @@ namespace Bridge.Models
             // one usr can have many resumes
             dBModelBuilder.Entity<ApplicationUser>()
             .HasMany<Resume>(u => u.Resumes) // application user has many resumes
-            .WithRequired(u => u.User)   // each resume required one user
-            .HasForeignKey(u => u.UserId)
-            .WillCascadeOnDelete(false);
+            .WithRequired(u => u.Candidate)   // each resume required one user
+            .HasForeignKey(u => u.CandidateId);
+            //.WillCascadeOnDelete(false);
 
-            // one user can have many coverletters
+            //// one user can have many coverletters
             dBModelBuilder.Entity<ApplicationUser>()
                  .HasMany<CoverLetter>(u => u.CoverLetters) // application user has many coveletter
-                 .WithRequired(u => u.User)   // each coverlletter required one user
-                 .HasForeignKey(u => u.UserId)
+                 .WithRequired(u => u.Candidate)   // each coverlletter required one user
+                 .HasForeignKey(u => u.CandidateId);
+            //     .WillCascadeOnDelete(false);
+
+            //// one cover letter can be there in many referrals
+            dBModelBuilder.Entity<CoverLetter>()
+                .HasMany(u => u.Referrals)
+                .WithRequired(u => u.CoverLetter)
+                .HasForeignKey(u => u.CoverLetterId);
+
+            // one resume can be there in many referrals
+            dBModelBuilder.Entity<Resume>()
+                .HasMany<Referral>(u => u.Refferals)
+                .WithRequired(u => u.Resume)
+                .HasForeignKey(u => u.ResumeId)
                  .WillCascadeOnDelete(false);
 
-            dBModelBuilder.Entity<Referral>()
-                .HasRequired(a => a.Company)
-                .WithMany()
-                .WillCascadeOnDelete(false);
+            // one referral has one company but one company can have many referrals
+            dBModelBuilder.Entity<Company>()
+                .HasMany(u => u.Referrals)
+                .WithRequired(u => u.Company)
+                .HasForeignKey(u => u.CompanyId);
+            //.WillCascadeOnDelete(false);
+
+            // one candidate can have many referrals
+            dBModelBuilder.Entity<ApplicationUser>()
+            .HasMany(u => u.CandidateReferral)
+            .WithRequired(u => u.Candidate)
+            .HasForeignKey(u => u.CandidateId)
+            .WillCascadeOnDelete(false);
+
+            //one referrar can have many referrals
+            dBModelBuilder.Entity<ApplicationUser>()
+            .HasMany(u => u.ReferrerReferral)
+            .WithOptional(u => u.Referrer)
+            .HasForeignKey(u => u.ReferrerId)
+            .WillCascadeOnDelete(false);
 
             base.OnModelCreating(dBModelBuilder);
-
-            //dBModelBuilder.Entity<Resume>().HasRequired(x => x.User);
-            //dBModelBuilder.Entity<CoverLetter>().HasRequired(x => x.User);
         }
     }
 }
