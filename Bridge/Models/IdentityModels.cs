@@ -90,7 +90,7 @@ namespace Bridge.Models
             .HasForeignKey(u => u.CandidateId)
             .WillCascadeOnDelete(false);
 
-            //one referrar can have many referrals
+            //one referrer can have many referrals
             dBModelBuilder.Entity<ApplicationUser>()
             .HasMany(u => u.ReferrerReferral)
             .WithOptional(u => u.Referrer)

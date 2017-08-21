@@ -15,7 +15,7 @@ namespace Bridge.Controllers
                 if (User.IsInRole("Candidate"))
                     return RedirectToAction("ResumeCenter", "Resume");
                 else
-                    return RedirectToAction("Index", "Referrer");
+                    return RedirectToAction("ReferrerCenter", "Referrer");
             }
             return View();
         }
