@@ -10,6 +10,7 @@ namespace Bridge.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public int CompanyId { get; set; }
         public ICollection<Resume> Resumes { get; set; }
         public ICollection<CoverLetter> CoverLetters { get; set; }
         //public ICollection<Referral> Referrals { get; set; }

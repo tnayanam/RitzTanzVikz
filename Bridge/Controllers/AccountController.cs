@@ -14,9 +14,11 @@ namespace Bridge.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -136,7 +138,16 @@ namespace Bridge.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var viewModel = new RegisterViewModel
+            {
+                Companies = _context.Companies.Select(x => new SelectListItem
+                {
+                    Value = x.CompanyId.ToString(),
+                    Text = x.Name
+                })
+            };
+
+            return View(viewModel);
         }
 
         //
@@ -148,7 +159,7 @@ namespace Bridge.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CompanyId = model.CompanyId };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

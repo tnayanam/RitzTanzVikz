@@ -1,6 +1,7 @@
 ﻿using Foolproof;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Bridge.Models
 {
@@ -78,14 +79,18 @@ namespace Bridge.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
 
         public string SelectedRoleType { get; set; }
 
-        [RequiredIf("SelectedRoleType", "Referrer", ErrorMessage = "...")]
         public string CompanyName { get; set; }
+
+        public IEnumerable<SelectListItem> Companies { get; set; }
+
+        [RequiredIf("SelectedRoleType", "Referrer", ErrorMessage = "...")]
+        public int CompanyId { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -103,7 +108,7 @@ namespace Bridge.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

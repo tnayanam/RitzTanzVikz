@@ -1,8 +1,65 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model IEnumerable<Bridge.Models.Referral>
+@using Bridge.Helpers
 
-<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReferralName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoverLetter.CoverLetterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Degree.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resume.ResumeName)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td colspan="5">No Referrals were found.</td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReferralName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Candidate.UserName)
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "CoverLetter", new { coverLetterId = @item.CoverLetterId})">@Html.DisplayFor(modelItem => item.CoverLetter.CoverLetterName)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Degree.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company.Name)
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Resume", new { resumeId = @item.ResumeId})">@Html.DisplayFor(modelItem => item.Resume.ResumeName)</a>
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    </td>*@
+            </tr>
+        }
 
-adfd
+    }
+
+</table>
+
+
