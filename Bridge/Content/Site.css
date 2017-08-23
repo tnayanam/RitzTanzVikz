@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: "Metrophobic", Helvetica, Arial, sans-serif;
-    background-color:#fefbf0;
+    background-color:#FF9800;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,7 +21,7 @@ textarea {
 
 /*changing the background colout for menu*/
 .navbar-inverse {
-     background-color: #fefbf0; 
+     background-color: #FF9800; 
      border-color: #fefbf0; 
 }
 

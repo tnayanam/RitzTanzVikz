@@ -8,6 +8,16 @@ namespace Bridge.Models
         public int ReferralId { get; set; }
         public string ReferralName { get; set; }
 
+        //docment proof related stuff
+        [StringLength(255)]
+        public string FileName { get; set; }
+
+        [StringLength(100)]
+        public string ContentType { get; set; }
+
+        public byte[] Content { get; set; }
+        // end
+
         public int DegreeId { get; set; }
         public virtual Degree Degree { get; set; }
 

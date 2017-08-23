@@ -1,8 +1,10 @@
 ﻿using Bridge.Models;
+using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -159,16 +161,10 @@ namespace Bridge.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CompanyId = model.CompanyId };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CompanyId = model.CompanyId, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-
-                    //   var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    // var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    // await roleManager.CreateAsync(new IdentityRole("JobSeeker"));
-
-
                     if (model.SelectedRoleType == "JobSeeker")
                     {
                         await UserManager.AddToRoleAsync(user.Id, "Candidate");
@@ -178,7 +174,9 @@ namespace Bridge.Controllers
                         await UserManager.AddToRoleAsync(user.Id, "Referrer");
                     }
                     else { }
-
+                    // Add User Claims for full name. You can check for the success of addition 
+                    await UserManager.AddClaimAsync(user.Id, new Claim("FirstName", user.FirstName));
+                    await UserManager.AddClaimAsync(user.Id, new Claim("LastName", user.LastName));
 
                     // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 

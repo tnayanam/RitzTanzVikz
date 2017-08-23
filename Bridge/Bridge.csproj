@@ -207,6 +207,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoverLetterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageFileController.cs" />
     <Compile Include="Controllers\ReferralController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReferrerController.cs" />
@@ -216,6 +217,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ActiveMenuHelper.cs" />
+    <Compile Include="Helpers\ClaimsPrincipalExtension.cs" />
     <Compile Include="Migrations\201708051512447_InitialCreate.cs" />
     <Compile Include="Migrations\201708051512447_InitialCreate.Designer.cs">
       <DependentUpon>201708051512447_InitialCreate.cs</DependentUpon>
@@ -412,8 +414,17 @@
     <Compile Include="Migrations\201708220115213_Aerqw.Designer.cs">
       <DependentUpon>201708220115213_Aerqw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708220316026_afr.cs" />
+    <Compile Include="Migrations\201708220316026_afr.Designer.cs">
+      <DependentUpon>201708220316026_afr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708220549554_aer1.cs" />
+    <Compile Include="Migrations\201708220549554_aer1.Designer.cs">
+      <DependentUpon>201708220549554_aer1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Referral.cs" />
@@ -421,12 +432,13 @@
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\GmailEmailService.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="ViewModel\ReferralViewModel.cs" />
+    <Compile Include="ViewModels\ReferralViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Resume.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\mvcfoolproof.unobtrusive.js" />
@@ -517,9 +529,12 @@
     <Content Include="Views\Shared\_ReferrerLayout.cshtml" />
     <Content Include="Views\Shared\_LeftNavReferrerPartial.cshtml" />
     <Content Include="Views\Referrer\ReferrerCenter.cshtml" />
+    <Content Include="Views\Referrer\ReferralConfirmation.cshtml" />
+    <Content Include="Views\Referrer\ReferredCandidates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ImageFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -676,6 +691,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708220115213_Aerqw.resx">
       <DependentUpon>201708220115213_Aerqw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708220316026_afr.resx">
+      <DependentUpon>201708220316026_afr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708220549554_aer1.resx">
+      <DependentUpon>201708220549554_aer1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

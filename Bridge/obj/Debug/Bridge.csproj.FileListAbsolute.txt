@@ -408,3 +408,5 @@ C:\Users\lenovo\Desktop\con1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.df3
 C:\Users\lenovo\Desktop\con1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asdrqwevewr.resources
 C:\Users\lenovo\Desktop\con1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asdrqwevewrjk.resources
 C:\Users\lenovo\Desktop\con1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.Aerqw.resources
+C:\Users\lenovo\Desktop\con1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.afr.resources
+C:\Users\lenovo\Desktop\con1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.aer1.resources

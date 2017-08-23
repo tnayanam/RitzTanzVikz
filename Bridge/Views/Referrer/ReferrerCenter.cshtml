@@ -21,6 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Resume.ResumeName)
         </th>
+        <th>Refer Status</th>
         <th></th>
     </tr>
     @if (Model.Count() == 0)
@@ -50,16 +51,13 @@
                 <td>
                     <a href="@Url.Action("Details", "Resume", new { resumeId = @item.ResumeId})">@Html.DisplayFor(modelItem => item.Resume.ResumeName)</a>
                 </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                    </td>*@
+                <td>
+                        @Html.ActionLink("Upload referral document","ReferralConfirmation", new { referralId= @item.ReferralId})
+                 </td>
+                <td></td>
             </tr>
         }
-
     }
-
 </table>
 
 
