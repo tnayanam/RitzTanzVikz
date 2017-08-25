@@ -1,8 +1,8 @@
 ﻿using Bridge.Models;
+using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Bridge.Controllers
@@ -25,48 +25,6 @@ namespace Bridge.Controllers
             return View(coverLetterList);
         }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(CoverLetter coverLetter, HttpPostedFileBase uploadedCoverLetter)
-        {
-            var x = User.Identity.GetUserId();
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (uploadedCoverLetter != null && uploadedCoverLetter.ContentLength > 0)
-                    {
-                        var tempcoverletter = new CoverLetter
-                        {
-                            FileName = System.IO.Path.GetFileName(uploadedCoverLetter.FileName),
-                            ContentType = uploadedCoverLetter.ContentType,
-                            CoverLetterName = coverLetter.CoverLetterName,
-                            CandidateId = User.Identity.GetUserId(),
-                            datetime = System.DateTime.Now
-                        };
-                        using (var reader = new System.IO.BinaryReader(uploadedCoverLetter.InputStream))
-                        {
-                            tempcoverletter.Content = reader.ReadBytes(uploadedCoverLetter.ContentLength);
-                        }
-                        _context.CoverLetters.Add(tempcoverletter);
-                    }
-                    _context.SaveChanges();
-                    return RedirectToAction("CoverLetterCenter");
-                }
-            }
-            catch (RetryLimitExceededException /* dex */)
-            {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-            return View("Index");
-        }
-
         public FileContentResult Details(int? coverLetterId)
         {
             var temp = _context.CoverLetters.Where(f => f.CoverLetterId == coverLetterId).SingleOrDefault();
@@ -84,6 +42,46 @@ namespace Bridge.Controllers
             _context.SaveChanges();
             return RedirectToAction("CoverLetterCenter");
         }
-    }
 
+        public ActionResult UploadCoverLetter()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadCoverLetter(CoverLetterViewModel viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (viewModel.UploadedCoverLetter != null && viewModel.UploadedCoverLetter.ContentLength > 0)
+                    {
+                        var tempcoverletter = new CoverLetter
+                        {
+                            FileName = System.IO.Path.GetFileName(viewModel.UploadedCoverLetter.FileName),
+                            ContentType = viewModel.UploadedCoverLetter.ContentType,
+                            CoverLetterName = viewModel.CoverLetterName,
+                            CandidateId = User.Identity.GetUserId(),
+                            datetime = System.DateTime.Now
+                        };
+                        using (var reader = new System.IO.BinaryReader(viewModel.UploadedCoverLetter.InputStream))
+                        {
+                            tempcoverletter.Content = reader.ReadBytes(viewModel.UploadedCoverLetter.ContentLength);
+                        }
+                        _context.CoverLetters.Add(tempcoverletter);
+                    }
+                    _context.SaveChanges();
+                    return RedirectToAction("CoverLetterCenter");
+                }
+            }
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View();
+        }
+    }
 }

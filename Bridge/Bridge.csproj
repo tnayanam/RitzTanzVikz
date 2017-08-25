@@ -213,6 +213,7 @@
     <Compile Include="Controllers\ReferrerController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="CustomValidation\FileType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -422,6 +423,10 @@
     <Compile Include="Migrations\201708220549554_aer1.Designer.cs">
       <DependentUpon>201708220549554_aer1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708240347260_Asdrfewweas.cs" />
+    <Compile Include="Migrations\201708240347260_Asdrfewweas.Designer.cs">
+      <DependentUpon>201708240347260_Asdrfewweas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -432,6 +437,7 @@
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\GmailEmailService.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ViewModels\CoverLetterViewModel.cs" />
     <Compile Include="ViewModels\ReferralViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Resume.cs" />
@@ -439,6 +445,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\ResumeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\mvcfoolproof.unobtrusive.js" />
@@ -519,8 +526,6 @@
     <Content Include="Views\Home\IndexL.cshtml" />
     <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
     <Content Include="Views\Resume\ResumeCenter.cshtml" />
-    <Content Include="Views\Resume\Create.cshtml" />
-    <Content Include="Views\CoverLetter\Create.cshtml" />
     <Content Include="Views\CoverLetter\CoverLetterCenter.cshtml" />
     <Content Include="Views\Referral\Create.cshtml" />
     <Content Include="Views\Referral\ReferralCenter.cshtml" />
@@ -531,6 +536,8 @@
     <Content Include="Views\Referrer\ReferrerCenter.cshtml" />
     <Content Include="Views\Referrer\ReferralConfirmation.cshtml" />
     <Content Include="Views\Referrer\ReferredCandidates.cshtml" />
+    <Content Include="Views\Resume\UploadResume.cshtml" />
+    <Content Include="Views\CoverLetter\UploadCoverLetter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -697,6 +704,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708220549554_aer1.resx">
       <DependentUpon>201708220549554_aer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708240347260_Asdrfewweas.resx">
+      <DependentUpon>201708240347260_Asdrfewweas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: "Metrophobic", Helvetica, Arial, sans-serif;
-    background-color:#FF9800;
+    background-color:#f4f4f4;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -124,3 +124,18 @@ a.list-group-item:hover, a.list-group-item:focus {
     background-color: #357ebd;
 }
  
+/*ToDO: horizontal scrolling prevention */
+/*html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}*/
+
+/*another work around to show table properly inside the main container*/
+.container-fluid.body-content {
+    padding-right: 10px;
+}
+
+/*other soltuion
+    <div class="container-fluid body-content">
+    change it to container class only.
+*/

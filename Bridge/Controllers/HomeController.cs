@@ -13,7 +13,7 @@ namespace Bridge.Controllers
             if (Request.IsAuthenticated)
             {
                 if (User.IsInRole("Candidate"))
-                    return RedirectToAction("ResumeCenter", "Resume");
+                    return RedirectToAction("ReferralCenter", "Referral");
                 else
                     return RedirectToAction("ReferrerCenter", "Referrer");
             }

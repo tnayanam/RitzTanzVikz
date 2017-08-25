@@ -22,6 +22,8 @@ namespace Bridge.Models
 
         public byte[] Content { get; set; }
 
+        //public HttpPostedFileBase Filess { get; set; }
+
         [Display(Name = "Date Uploaded")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime datetime { get; set; }
