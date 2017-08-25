@@ -6,6 +6,8 @@ namespace Bridge.Models
     {
         [Key]
         public int ReferralId { get; set; }
+
+        [Display(Name ="My Referrals")]
         public string ReferralName { get; set; }
 
         //docment proof related stuff

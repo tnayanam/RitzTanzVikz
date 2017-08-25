@@ -139,3 +139,17 @@ a.list-group-item:hover, a.list-group-item:focus {
     <div class="container-fluid body-content">
     change it to container class only.
 */
+/*making button in table panel to occur in center vertically*/
+.panel-heading {
+    overflow:auto;
+    padding: 5px;
+
+    }
+/*white color to the link element in the panel "refer me*/
+.panel-title > a {
+     color: #fff
+}
+/*font size of the label in stats field*/
+.label {
+    font-size: 85%;
+}

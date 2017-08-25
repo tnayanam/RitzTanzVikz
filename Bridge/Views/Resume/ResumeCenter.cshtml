@@ -1,56 +1,59 @@
 ﻿@model IEnumerable<Bridge.Models.Resume>
 
-@{ 
+@{
     ViewBag.Title = "Resume Center";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ResumeName)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.datetime)
-        </th>
-        <th><a href="@Url.Action("UploadResume")" class="btn btn-primary btn-block">Upload Resume </a></th>
-        <th></th>
-    </tr>
-
-@if (Model.Count() == 0)
-{
-    <tr><td colspan="4">No Resumes were found.</td></tr>
-}
-else
-{
-    foreach (var item in Model)
-    {
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">My Resumes</h3>
+    </div>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    <a href="@Url.Action("Details", "Resume", new { resumeId = @item.ResumeId})">@Html.DisplayFor(modelItem => item.ResumeName)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.datetime)
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { resumeId = item.ResumeId }, new { @class = "js-popup" })
-                </td>
-                <td></td>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResumeName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.datetime)
+                </th>
+                <th><a href="@Url.Action("UploadResume")" class="btn btn-primary">Upload Resume </a></th>
+                <th></th>
             </tr>
+        </thead>
+        @if (Model.Count() == 0)
+        {
+            <tr><td colspan="4">No Resumes were found.</td></tr>
         }
-    }
-</table>
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Details", "Resume", new { resumeId = @item.ResumeId})">@Html.DisplayFor(modelItem => item.ResumeName)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.datetime)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { resumeId = item.ResumeId }, new { @class = "js-popup" })
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            }
+        }
+    </table>
+</div>
 
- @section Scripts {
-     <script>
-         $('.js-popup').on('click', function () { return confirm('are you sure?'); });
-     </script>
+@section Scripts {
+    <script>
+        $('.js-popup').on('click', function () { return confirm('are you sure?'); });
+    </script>
 }
-
-
-
-
-
 
 
 
