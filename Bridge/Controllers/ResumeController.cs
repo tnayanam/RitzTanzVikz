@@ -2,6 +2,7 @@
 using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -23,6 +24,23 @@ namespace Bridge.Controllers
             var candidateId = User.Identity.GetUserId();
             var resumeList = _context.Resumes.Where(r => r.CandidateId == candidateId).OrderByDescending(r => r.datetime).ToList();
             return View(resumeList);
+        }
+
+        public FileContentResult Download(int? resumeId)
+        {
+            var temp = _context.Resumes.Where(f => f.ResumeId == resumeId).SingleOrDefault();
+            var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
+            fileRes.FileDownloadName = temp.FileName;
+            return fileRes;
+        }
+
+        public FileStreamResult GetPDF(int? resumeId)
+        {
+            var temp = _context.Resumes.Where(f => f.ResumeId == resumeId).SingleOrDefault();
+            var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
+            var streamResult = new FileStreamResult(new MemoryStream(fileRes.FileContents),
+                                        fileRes.ContentType);
+            return streamResult;
         }
 
         public FileContentResult Details(int? resumeId)

@@ -86,7 +86,7 @@ textarea {
 
 /*set colour when men is active*/
 .active{
-    background-color:#ff6a00 !important;
+    background-color:#FF9800 !important;
 }
 
 /*determines width of button text*/
@@ -151,5 +151,5 @@ a.list-group-item:hover, a.list-group-item:focus {
 }
 /*font size of the label in stats field*/
 .label {
-    font-size: 85%;
+    font-size: 95%;
 }

@@ -8,7 +8,10 @@ namespace Bridge.ViewModels
     {
         public int ReferralViewModelId { get; set; }
 
+        [Display(Name = "Experience(months)")]
+        [Range(1, int.MaxValue, ErrorMessage = "Experience should be greater than 0.")]
         public int Experience { get; set; }
+
         [Display(Name = "Referral Name")]
         public string ReferralName { get; set; }
 

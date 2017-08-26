@@ -10,7 +10,7 @@ namespace Bridge.Models
         public int ResumeId { get; set; }
 
         [Required]
-        [Display(Name = "Resume Name")]
+        [Display(Name = "RESUME NAME")]
         [StringLength(255)]
         public string ResumeName { get; set; }
 

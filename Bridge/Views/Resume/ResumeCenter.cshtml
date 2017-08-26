@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Bridge.Models.Resume>
-
+@using Bridge.ViewModels
 @{
     ViewBag.Title = "Resume Center";
 }
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">My Resumes</h3>
+        <h3 class="panel-title"><a href="@Url.Action("UploadResume")" class="btn btn-primary">Upload Resume </a></h3>
     </div>
     <table class="table">
         <thead>
@@ -14,11 +14,11 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ResumeName)
                 </th>
-
                 <th>
                     @Html.DisplayNameFor(model => model.datetime)
                 </th>
-                <th><a href="@Url.Action("UploadResume")" class="btn btn-primary">Upload Resume </a></th>
+                <th>Options</th>
+                <th>@*Options*@</th>
                 <th></th>
             </tr>
         </thead>
@@ -30,17 +30,22 @@
         {
             foreach (var item in Model)
             {
+                <a href="@Url.Action("GetPDF", "Resume", new { resumeId = @item.ResumeId})">asdas</a>
                 <tbody>
                     <tr>
                         <td>
-                            <a href="@Url.Action("Details", "Resume", new { resumeId = @item.ResumeId})">@Html.DisplayFor(modelItem => item.ResumeName)</a>
+                            <a href="@Url.Action("Download", "Resume", new { resumeId = @item.ResumeId})">@Html.DisplayFor(modelItem => item.ResumeName)</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.datetime)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.ActionLink("Delete", "Delete", new { resumeId = item.ResumeId }, new { @class = "js-popup" })
-                        </td>
+                        </td>*@
+                        @Html.Partial("_TableButtonsPartial", new SmallButtonViewModel
+                       {
+                           ResumeId = item.ResumeId
+                       })
                         <td></td>
                     </tr>
                 </tbody>
@@ -49,11 +54,13 @@
     </table>
 </div>
 
-@section Scripts {
+
+
+@*@section Scripts {
     <script>
         $('.js-popup').on('click', function () { return confirm('are you sure?'); });
     </script>
-}
+}*@
 
 
 

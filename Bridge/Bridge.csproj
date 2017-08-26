@@ -446,6 +446,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResumeViewModel.cs" />
+    <Compile Include="ViewModels\SmallButtonViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\logo.png" />
@@ -539,6 +540,9 @@
     <Content Include="Views\Referrer\ReferredCandidates.cshtml" />
     <Content Include="Views\Resume\UploadResume.cshtml" />
     <Content Include="Views\CoverLetter\UploadCoverLetter.cshtml" />
+    <Content Include="Views\Shared\_SmallButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_TableButtonsPartial.cshtml" />
+    <Content Include="Views\Resume\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

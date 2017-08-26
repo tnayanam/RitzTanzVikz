@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<Bridge.Models.CoverLetter>
+    @using Bridge.ViewModels
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">My Cover Letter</h3>
+        <h3 class="panel-title"><a href="@Url.Action("UploadCoverLetter")" class="btn btn-primary">Upload Cover Letter </a></h3>
     </div>
     <table class="table">
         <thead>
@@ -13,7 +14,8 @@
                 <th>
                     @Html.DisplayNameFor(model => model.datetime)
                 </th>
-                <th><a href="@Url.Action("UploadCoverLetter")" class="btn btn-primary">Upload Cover Letter </a></th>
+                @*<th>Options</th>*@
+                <th>Options</th>
                 <th></th>
             </tr>
         </thead>
@@ -33,9 +35,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.datetime)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.ActionLink("Delete", "Delete", new { coverLetterId = @item.CoverLetterId }, new { @class = "js-popup" })
-                        </td>
+                        </td>*@
+                        @Html.Partial("_TableButtonsPartial", new SmallButtonViewModel
+                   {
+                       CoverLetterId = item.CoverLetterId
+                   })
                         <td></td>
                     </tr>
                 </tbody>
@@ -44,7 +50,7 @@
     </table>
 </div>
 
-@section Scripts
+@*@section Scripts
 {
     <script>
         $('.js-popup').on('click', function () { return confirm('are you sure?'); });
@@ -65,7 +71,7 @@
                     txt = "You pressed Cancel!";
                 }
             });
-        </script>*@
-}
+        </script>
+}*@
 
 

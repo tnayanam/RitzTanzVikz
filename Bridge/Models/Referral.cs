@@ -7,7 +7,7 @@ namespace Bridge.Models
         [Key]
         public int ReferralId { get; set; }
 
-        [Display(Name ="My Referrals")]
+        [Display(Name ="REFERRALS")]
         public string ReferralName { get; set; }
 
         //docment proof related stuff

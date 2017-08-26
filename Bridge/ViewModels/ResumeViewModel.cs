@@ -6,7 +6,7 @@ namespace Bridge.ViewModels
 {
     public class ResumeViewModel
     {
-        [FileType("pdf|doc|docx", ErrorMessage = "File type is not valid.")]
+        [FileType("pdf|doc|docx|PDF", ErrorMessage = "File type is not valid.")]
         [Required]
         public HttpPostedFileBase UploadedResume { get; set; }
         [Required]

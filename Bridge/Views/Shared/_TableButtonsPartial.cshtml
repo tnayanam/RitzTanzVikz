@@ -1,0 +1,40 @@
+﻿@model Bridge.ViewModels.SmallButtonViewModel
+@using Bridge.ViewModels
+
+<td style="width: 120px;">
+    <div class="btn-group" role="group">
+        @Html.Partial("_SmallButtonPartial",
+               new SmallButtonViewModel
+               {
+                   Action = "Edit",
+                   ButtonType = "btn-primary",
+                   Glyph = "pencil",
+                   Text = "Edit button",
+                   ReferralId = Model.ReferralId,
+                   ResumeId = Model.ResumeId,
+                   CoverLetterId = Model.CoverLetterId
+               })
+        @Html.Partial("_SmallButtonPartial",
+              new SmallButtonViewModel
+              {
+                  Action = "Details",
+                  ButtonType = "btn-success",
+                  Glyph = "list",
+                  Text = "Detail button",
+                  ReferralId = Model.ReferralId,
+                  ResumeId = Model.ResumeId,
+                  CoverLetterId = Model.CoverLetterId
+              })
+        @Html.Partial("_SmallButtonPartial",
+               new SmallButtonViewModel
+               {
+                   Action = "Delete",
+                   ButtonType = "btn-danger",
+                   Glyph = "trash",
+                   Text = "Delete button",
+                   ReferralId = Model.ReferralId,
+                   ResumeId = Model.ResumeId,
+                   CoverLetterId = Model.CoverLetterId
+               })
+    </div>
+</td>
