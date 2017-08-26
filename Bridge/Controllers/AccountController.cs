@@ -161,7 +161,9 @@ namespace Bridge.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CompanyId = model.CompanyId, FirstName = model.FirstName, LastName = model.LastName };
+                //UserName = model.Email, in case if we want to go with username approach we need to set this and add 
+
+                var user = new ApplicationUser { Email = model.Email, UserName = model.Email, CompanyId = model.CompanyId, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -193,6 +195,19 @@ namespace Bridge.Controllers
                 }
                 AddErrors(result);
             }
+            //var viewModel = new RegisterViewModel
+            //{
+            //    Companies = _context.Companies.Select(x => new SelectListItem
+            //    {
+            //        Value = x.CompanyId.ToString(),
+            //        Text = x.Name
+            //    })
+            //};
+            model.Companies = _context.Companies.Select(x => new SelectListItem
+            {
+                Value = x.CompanyId.ToString(),
+                Text = x.Name
+            });
 
             // If we got this far, something failed, redisplay form
             return View(model);

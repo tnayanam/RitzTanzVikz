@@ -45,7 +45,15 @@ namespace Bridge.Controllers
 
         public ActionResult UploadCoverLetter()
         {
-            return View();
+            var viewModel = new CoverLetterViewModel
+            {
+                Companies = _context.Companies.Select(x => new SelectListItem
+                {
+                    Text = x.CompanyId.ToString(),
+                    Value = x.Name
+                })
+            };
+            return View(viewModel);
         }
 
         [HttpPost]

@@ -36,7 +36,7 @@ namespace Bridge.ViewModels
         [Required]
         public string LastName { get; set; }
 
-        [RequiredIf("SelectedRoleType", "Referrer", ErrorMessage = "...")]
+        [RequiredIf("SelectedRoleType", "Referrer", ErrorMessage = "Please select a company.")]
         public int CompanyId { get; set; }
     }
 }
