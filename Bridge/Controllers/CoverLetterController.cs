@@ -49,8 +49,8 @@ namespace Bridge.Controllers
             {
                 Companies = _context.Companies.Select(x => new SelectListItem
                 {
-                    Text = x.CompanyId.ToString(),
-                    Value = x.Name
+                    Text = x.CompanyName,
+                    Value = x.CompanyId.ToString()
                 })
             };
             return View(viewModel);
@@ -72,7 +72,8 @@ namespace Bridge.Controllers
                             ContentType = viewModel.UploadedCoverLetter.ContentType,
                             CoverLetterName = viewModel.CoverLetterName,
                             CandidateId = User.Identity.GetUserId(),
-                            datetime = System.DateTime.Now
+                            datetime = System.DateTime.Now,
+                            CompanyId = viewModel.CompanyId
                         };
                         using (var reader = new System.IO.BinaryReader(viewModel.UploadedCoverLetter.InputStream))
                         {

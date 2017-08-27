@@ -1,6 +1,7 @@
 ﻿using Bridge.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Bridge.ViewModels
 {
@@ -32,7 +33,7 @@ namespace Bridge.ViewModels
 
         [Display(Name = "Company Name")]
         public int CompanyId { get; set; }
-        public IEnumerable<Company> Companies { get; set; }
+        public IEnumerable<SelectListItem> Companies { get; set; }
 
         [Display(Name = "Cover Letter")]
         public int CoverLetterId { get; set; }

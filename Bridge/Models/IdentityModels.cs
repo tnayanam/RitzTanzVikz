@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Bridge.Models
 {
-  
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Resume> Resumes { get; set; }
@@ -75,6 +71,14 @@ namespace Bridge.Models
             .WithOptional(u => u.Referrer)
             .HasForeignKey(u => u.ReferrerId)
             .WillCascadeOnDelete(false);
+
+            // one company can have many coverletters, 
+            //one cover letter can belong to just one company
+            dBModelBuilder.Entity<Company>()
+                .HasMany(c => c.CoverLetters)
+                .WithRequired(c => c.Company)
+                .HasForeignKey(c => c.CompanyId).
+                WillCascadeOnDelete(false);
 
             base.OnModelCreating(dBModelBuilder);
         }

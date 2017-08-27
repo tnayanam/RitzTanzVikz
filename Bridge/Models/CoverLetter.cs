@@ -10,7 +10,7 @@ namespace Bridge.Models
         public int CoverLetterId { get; set; }
 
         [Required]
-        [Display(Name ="Cover Letter")]
+        [Display(Name = "Cover Letter")]
         [StringLength(255)]
         public string CoverLetterName { get; set; }
 
@@ -25,6 +25,10 @@ namespace Bridge.Models
         [Display(Name = "Date Uploaded")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime datetime { get; set; }
+
+        [Display(Name = "Company Name")]
+        public int CompanyId { get; set; }
+        public virtual Company Company { get; set; }
 
         public string CandidateId { get; set; }
         public virtual ApplicationUser Candidate { get; set; }

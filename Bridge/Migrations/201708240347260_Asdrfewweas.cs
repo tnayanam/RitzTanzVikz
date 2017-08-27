@@ -7,10 +7,14 @@ namespace Bridge.Migrations
     {
         public override void Up()
         {
+            AddColumn("dbo.Companies", "CompanyName", c => c.String());
+            DropColumn("dbo.Companies", "Name");
         }
         
         public override void Down()
         {
+            AddColumn("dbo.Companies", "Name", c => c.String());
+            DropColumn("dbo.Companies", "CompanyName");
         }
     }
 }

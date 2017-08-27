@@ -7,8 +7,9 @@ namespace Bridge.Models
     {
         [Key]
         public int CompanyId { get; set; }
-        public string Name { get; set; }
+        public string CompanyName { get; set; }
 
         public ICollection<Referral> Referrals { get; set; }
+        public ICollection<CoverLetter> CoverLetters { get; set; }
     }
 }

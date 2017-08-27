@@ -145,7 +145,7 @@ namespace Bridge.Controllers
                 Companies = _context.Companies.Select(x => new SelectListItem
                 {
                     Value = x.CompanyId.ToString(),
-                    Text = x.Name
+                    Text = x.CompanyName
                 })
             };
 
@@ -206,7 +206,7 @@ namespace Bridge.Controllers
             model.Companies = _context.Companies.Select(x => new SelectListItem
             {
                 Value = x.CompanyId.ToString(),
-                Text = x.Name
+                Text = x.CompanyName
             });
 
             // If we got this far, something failed, redisplay form

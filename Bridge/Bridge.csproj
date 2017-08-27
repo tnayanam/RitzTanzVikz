@@ -427,6 +427,10 @@
     <Compile Include="Migrations\201708240347260_Asdrfewweas.Designer.cs">
       <DependentUpon>201708240347260_Asdrfewweas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708270049322_asdfwq%40.cs" />
+    <Compile Include="Migrations\201708270049322_asdfwq%40.Designer.cs">
+      <DependentUpon>201708270049322_asdfwq%40.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -711,6 +715,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708240347260_Asdrfewweas.resx">
       <DependentUpon>201708240347260_Asdrfewweas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708270049322_asdfwq%40.resx">
+      <DependentUpon>201708270049322_asdfwq%40.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
