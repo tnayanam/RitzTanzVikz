@@ -28,6 +28,17 @@ namespace Bridge.Controllers
             return View(viewModel);
         }
 
+        /*private void ConfigureViewModel(ReferralViewModel model)
+        {
+            model.Companies = _context.Companies.Select(x => new SelectListItem
+            {
+                Text = x.CompanyName,
+                Value = x.CompanyId.ToString()
+            });
+            model.
+            
+        }*/
+
         public ActionResult Create()
         {
             var candidateId = User.Identity.GetUserId();
@@ -37,12 +48,27 @@ namespace Bridge.Controllers
                 {
                     Text = x.CompanyName,
                     Value = x.CompanyId.ToString()
-
                 }),
-                Degrees = _context.Degrees.ToList(),
-                Skills = _context.Skills.ToList(),
-                Resumes = _context.Resumes.Where(r => r.CandidateId == candidateId).ToList(),
-                CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId).ToList()
+                Degrees = _context.Degrees.Select(r => new SelectListItem
+                {
+                    Text = r.DegreeName,
+                    Value = r.DegreeId.ToString()
+                }),
+                Skills = _context.Skills.Select(r => new SelectListItem
+                {
+                    Text = r.SkillName,
+                    Value = r.SkillId.ToString()
+                }),
+                Resumes = _context.Resumes.Where(r => r.CandidateId == candidateId).Select(r => new SelectListItem
+                {
+                    Text = r.ResumeName,
+                    Value = r.ResumeId.ToString()
+                }),
+                CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId).Select(c => new SelectListItem
+                {
+                    Text = c.CoverLetterName,
+                    Value = c.CoverLetterId.ToString()
+                })
             };
             return View(viewModel);
         }
@@ -59,7 +85,7 @@ namespace Bridge.Controllers
                 ResumeId = viewModel.ResumeId,
                 CandidateId = candidateId,
                 DegreeId = viewModel.DegreeId,
-                CoverLetterId = viewModel.CoverLetterId
+                CoverLetterId = viewModel.CoverLetterId,
             };
             _context.Referrals.Add(referral);
             _context.SaveChanges();

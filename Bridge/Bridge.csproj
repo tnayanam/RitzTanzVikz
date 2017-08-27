@@ -431,6 +431,14 @@
     <Compile Include="Migrations\201708270049322_asdfwq%40.Designer.cs">
       <DependentUpon>201708270049322_asdfwq%40.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708270434181_se.cs" />
+    <Compile Include="Migrations\201708270434181_se.Designer.cs">
+      <DependentUpon>201708270434181_se.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708271955291_wqerasdAWQ.cs" />
+    <Compile Include="Migrations\201708271955291_wqerasdAWQ.Designer.cs">
+      <DependentUpon>201708271955291_wqerasdAWQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -454,6 +462,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Scripts\CustomJS.js" />
     <Content Include="Scripts\mvcfoolproof.unobtrusive.js" />
     <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
     <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js" />
@@ -718,6 +727,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708270049322_asdfwq%40.resx">
       <DependentUpon>201708270049322_asdfwq%40.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708270434181_se.resx">
+      <DependentUpon>201708270434181_se.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271955291_wqerasdAWQ.resx">
+      <DependentUpon>201708271955291_wqerasdAWQ.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

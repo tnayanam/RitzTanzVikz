@@ -7,7 +7,7 @@ namespace Bridge.Models
         [Key]
         public int ReferralId { get; set; }
 
-        [Display(Name ="REFERRALS")]
+        [Display(Name = "REFERRALS")]
         public string ReferralName { get; set; }
 
         //docment proof related stuff
@@ -23,7 +23,7 @@ namespace Bridge.Models
         public int DegreeId { get; set; }
         public virtual Degree Degree { get; set; }
 
-        public int CoverLetterId { get; set; }
+        public int? CoverLetterId { get; set; }
         public virtual CoverLetter CoverLetter { get; set; }
 
         public int ResumeId { get; set; }

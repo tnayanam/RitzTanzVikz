@@ -41,7 +41,7 @@ namespace Bridge.Models
             //// one cover letter can be there in many referrals
             dBModelBuilder.Entity<CoverLetter>()
                 .HasMany(u => u.Referrals)
-                .WithRequired(u => u.CoverLetter)
+                .WithOptional(u => u.CoverLetter)
                 .HasForeignKey(u => u.CoverLetterId);
 
             // one resume can be there in many referrals

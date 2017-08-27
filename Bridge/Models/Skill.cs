@@ -6,6 +6,6 @@ namespace Bridge.Models
     {
         [Key]
         public int SkillId { get; set; }
-        public string Name { get; set; }
+        public string SkillName { get; set; }
     }
 }
