@@ -28,48 +28,41 @@ namespace Bridge.Controllers
             return View(viewModel);
         }
 
-        /*private void ConfigureViewModel(ReferralViewModel model)
+        private void ConfigureViewModel(ReferralViewModel model)
         {
+            var candidateId = User.Identity.GetUserId();
             model.Companies = _context.Companies.Select(x => new SelectListItem
             {
                 Text = x.CompanyName,
                 Value = x.CompanyId.ToString()
             });
-            model.
-            
-        }*/
+            model.Degrees = _context.Degrees.Select(r => new SelectListItem
+            {
+                Text = r.DegreeName,
+                Value = r.DegreeId.ToString()
+            });
+            model.Skills = _context.Skills.Select(r => new SelectListItem
+            {
+                Text = r.SkillName,
+                Value = r.SkillId.ToString()
+            });
+            model.Resumes = _context.Resumes.Where(r => r.CandidateId == candidateId).Select(r => new SelectListItem
+            {
+                Text = r.ResumeName,
+                Value = r.ResumeId.ToString()
+            });
+            // need to get the dropdown value of coverletters from first company in the Model.Companies 
+            model.CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId && r.CompanyId.ToString() == model.Companies.FirstOrDefault().Value).Select(c => new SelectListItem
+            {
+                Text = c.CoverLetterName,
+                Value = c.CoverLetterId.ToString()
+            });
+        }
 
         public ActionResult Create()
         {
-            var candidateId = User.Identity.GetUserId();
-            var viewModel = new ReferralViewModel
-            {
-                Companies = _context.Companies.Select(x => new SelectListItem
-                {
-                    Text = x.CompanyName,
-                    Value = x.CompanyId.ToString()
-                }),
-                Degrees = _context.Degrees.Select(r => new SelectListItem
-                {
-                    Text = r.DegreeName,
-                    Value = r.DegreeId.ToString()
-                }),
-                Skills = _context.Skills.Select(r => new SelectListItem
-                {
-                    Text = r.SkillName,
-                    Value = r.SkillId.ToString()
-                }),
-                Resumes = _context.Resumes.Where(r => r.CandidateId == candidateId).Select(r => new SelectListItem
-                {
-                    Text = r.ResumeName,
-                    Value = r.ResumeId.ToString()
-                }),
-                CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId).Select(c => new SelectListItem
-                {
-                    Text = c.CoverLetterName,
-                    Value = c.CoverLetterId.ToString()
-                })
-            };
+            ReferralViewModel viewModel = new ReferralViewModel();
+            ConfigureViewModel(viewModel);
             return View(viewModel);
         }
 

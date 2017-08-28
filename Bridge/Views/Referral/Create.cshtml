@@ -16,8 +16,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CompanyId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.DropDownListFor(m => m.CompanyId, Model.Companies, new { @class = "form-control js-change", onchange = "companyChanged()" })*@
-                @Html.DropDownListFor(m => m.CompanyId, Model.Companies, new { @class = "form-control", data_url = "@Url.Action("ListOfCoverLetterByCompanyId", "Referral")" })
+                @Html.DropDownListFor(m => m.CompanyId, Model.Companies, new { @class = "form-control", data_url = Url.Action("ListOfCoverLetterByCompanyId", "Referral") })
                 @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,27 +64,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CoverLetterId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.CoverLetterId, Model.CoverLetters, new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.CoverLetterId, Model.CoverLetters,new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CoverLetterId, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.CoverLetterId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.CoverLetterId, new SelectList(Model.CoverLetters, "CoverLetterId", "CoverLetterName", Model.CoverLetters), new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CoverLetterId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        @* this one is for ajax. *@
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.CoverLetterId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select id="CoverLetterId" class="form-control" name="CoverLetterId"></select>
-                @Html.ValidationMessageFor(model => model.CoverLetterId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -95,27 +77,3 @@
     </div>
 }
 
-@*@section scripts{
-    <script>
-        function companyChanged() {
-            var companyId = $(".js-change").val();
-            $.ajax({
-                url: "/Referral/ListOfCoverLetterByCompanyId",
-                data: { companyId: companyId },
-                contentType: "application/json; charset-utf-8",
-                success: function (datas) {
-                    $("#CoverLetterId").html("");
-                    debugger;
-                    $.each(datas, function (i, data) {
-                        $("#CoverLetterId").append('<option value="' + data.Value + '">' + data.Text + '</option>');
-                    });
-                },
-                error: function () {
-                }
-            });
-        }
-    </script>
-    <script>
-        companyChanged();
-    </script>
-}*@
