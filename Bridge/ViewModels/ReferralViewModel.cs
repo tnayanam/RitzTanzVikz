@@ -19,6 +19,7 @@ namespace Bridge.ViewModels
         public string ResumeName { get; set; }
 
         [Display(Name = "Resume")]
+        [Required]
         public int ResumeId { get; set; }
         public IEnumerable<SelectListItem> Resumes { get; set; }
 
@@ -31,7 +32,8 @@ namespace Bridge.ViewModels
         public IEnumerable<SelectListItem> Skills { get; set; }
 
         [Display(Name = "Company Name")]
-        public int CompanyId { get; set; }
+        [Required]
+        public int? CompanyId { get; set; }
         public IEnumerable<SelectListItem> Companies { get; set; }
 
         // needs to have "?" because when no dropdown is selected we want to pass NULL values

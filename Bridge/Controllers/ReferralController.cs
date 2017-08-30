@@ -51,12 +51,19 @@ namespace Bridge.Controllers
                 Text = r.ResumeName,
                 Value = r.ResumeId.ToString()
             });
-            // need to get the dropdown value of coverletters from first company in the Model.Companies 
-            model.CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId && r.CompanyId.ToString() == model.Companies.FirstOrDefault().Value).Select(c => new SelectListItem
+
+            if (model.CompanyId.HasValue)
             {
-                Text = c.CoverLetterName,
-                Value = c.CoverLetterId.ToString()
-            });
+                model.CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId && r.CompanyId == model.CompanyId).Select(c => new SelectListItem
+                {
+                    Text = c.CoverLetterName,
+                    Value = c.CoverLetterId.ToString()
+                });
+            }
+            else
+            {
+                model.CoverLetters = new SelectList(Enumerable.Empty<SelectListItem>());
+            }
         }
 
         public ActionResult Create()
@@ -73,13 +80,15 @@ namespace Bridge.Controllers
             var candidateId = User.Identity.GetUserId();
             var referral = new Referral
             {
-                CompanyId = viewModel.CompanyId,
+
                 ReferralName = viewModel.ReferralName,
                 ResumeId = viewModel.ResumeId,
                 CandidateId = candidateId,
                 DegreeId = viewModel.DegreeId,
                 CoverLetterId = viewModel.CoverLetterId,
             };
+            if (viewModel.CompanyId.HasValue)
+                referral.CompanyId = viewModel.CompanyId.Value;
             _context.Referrals.Add(referral);
             _context.SaveChanges();
             return RedirectToAction("ReferralCenter");
