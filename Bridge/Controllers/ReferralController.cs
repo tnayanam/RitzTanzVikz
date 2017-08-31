@@ -52,6 +52,11 @@ namespace Bridge.Controllers
                 Value = r.ResumeId.ToString()
             });
 
+            if (model.Resumes.Count() > 0)
+            {
+                model.IsResumeExists = true;
+            }
+
             if (model.CompanyId.HasValue)
             {
                 model.CoverLetters = _context.CoverLetters.Where(r => r.CandidateId == candidateId && r.CompanyId == model.CompanyId).Select(c => new SelectListItem
@@ -93,6 +98,17 @@ namespace Bridge.Controllers
             _context.SaveChanges();
             return RedirectToAction("ReferralCenter");
         }
+
+        // DELETE
+        public ActionResult Delete(int referralId)
+        {
+            var r = _context.Referrals.Where(d => d.ReferralId == referralId);
+            _context.Referrals.RemoveRange(r);
+            _context.SaveChanges();
+            return RedirectToAction("ReferralCenter");
+        }
+
+        [HttpPost]
         public JsonResult ListOfCoverLetterByCompanyId(int companyId)
         {
             var coverletters = _context.CoverLetters
@@ -104,7 +120,7 @@ namespace Bridge.Controllers
             {
                 dropdown.Add(new SelectListItem { Text = cl.CoverLetterName, Value = cl.CoverLetterId.ToString() });
             }
-            return Json(dropdown, JsonRequestBehavior.AllowGet);
+            return Json(dropdown);
         }
     }
 }

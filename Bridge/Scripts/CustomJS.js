@@ -3,13 +3,13 @@
     $('#CompanyId').change(function () {
         var companyId = $(this).val();
         var url = $(this).data('url');
-        console.log(url);
         coverLetterSelect.empty();
         if (!companyId) {
             return;
         }
         $.ajax({
-              url: url, 
+            url: url,
+            type: 'POST',
             data: { companyId: companyId },
             success: function (response) {
                 coverLetterSelect.append($('<option></option>').val('').text('None'));
