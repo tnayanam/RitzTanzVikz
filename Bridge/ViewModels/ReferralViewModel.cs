@@ -10,6 +10,8 @@ namespace Bridge.ViewModels
 
         public bool IsResumeExists { get; set; }
 
+        public bool IsCoverLetterExists { get; set; }
+
         [Display(Name = "Experience(months)")]
         [Range(1, int.MaxValue, ErrorMessage = "Experience should be greater than 0.")]
         public int Experience { get; set; }

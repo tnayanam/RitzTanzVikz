@@ -22,3 +22,15 @@
     });
 })
 
+
+$(function () {
+    //var companyFind = $('#companyfind');
+    $('#companyfind').click(function () {
+        debugger;
+
+        $(".onclick").show();
+    });
+})
+
+
+

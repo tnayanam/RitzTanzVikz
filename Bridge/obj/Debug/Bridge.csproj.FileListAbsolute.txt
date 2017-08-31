@@ -824,3 +824,4 @@ C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migratio
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.csproj.GenerateResource.Cache
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.dll
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.pdb
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asda.resources

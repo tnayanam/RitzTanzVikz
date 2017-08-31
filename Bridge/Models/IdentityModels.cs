@@ -49,7 +49,8 @@ namespace Bridge.Models
                 .HasMany<Referral>(u => u.Refferals)
                 .WithRequired(u => u.Resume)
                 .HasForeignKey(u => u.ResumeId)
-                 .WillCascadeOnDelete(false);
+                 // we want all the referrals also to be deleted if the res
+                 .WillCascadeOnDelete(true);
 
             // one referral has one company but one company can have many referrals
             dBModelBuilder.Entity<Company>()
