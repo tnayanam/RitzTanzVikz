@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Foolproof;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -12,8 +13,8 @@ namespace Bridge.ViewModels
 
         public bool IsCoverLetterExists { get; set; }
 
-        //  [RequiredIf("CompanyId", "4", ErrorMessage = "asdfsdfsa")]
-        //[Display(Name = "Other Company")]
+        [RequiredIf("CompanyId", "4", ErrorMessage = "asdfsdfsa")]
+        [Display(Name = "Other Company")]
         public string TempCompany { get; set; }
 
 

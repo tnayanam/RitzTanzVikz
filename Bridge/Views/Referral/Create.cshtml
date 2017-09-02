@@ -25,12 +25,13 @@
                 <div class="col-md-10">
                     @Html.DropDownListFor(m => m.CompanyId, Model.Companies, "Please Select", new { @class = "form-control", data_url = Url.Action("ListOfCoverLetterByCompanyId", "Referral") })
                     @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
-                    <a type="button"
-                       class="btn"
-                       href="#article-editor"
-                       data-toggle="modal">Click me</a>  </div>
+                    @*<a type="button"
+                        class="btn"
+                        href="#article-editor"
+                        data-toggle="modal">Click me</a>*@
+                </div>
             </div>
-           
+            @*<div class="js-showtextbox">Click me for adding other company.</div>*@
             <div class="form-group js-div" style="display:none;">
                 @Html.LabelFor(model => model.TempCompany, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -98,12 +99,12 @@
 
 
 @section Scripts {
-    
+
 }
 
 
 
-    @*<div class="modal fade" id="article-editor">
+@*<div class="modal fade" id="article-editor">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

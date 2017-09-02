@@ -29,16 +29,22 @@
     });
 })
 
-$(function () {
-    $('.mybtn').click(function () {
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: { companyName: companyName },
-            success: function (response) {
-                alert("hell");
-            },
-            error: function () { alert("fail") }
-        });
-    });
-});
+//$(function () {
+//    $('.mybtn').click(function () {
+//        $.ajax({
+//            url: url,
+//            type: 'POST',
+//            data: { companyName: companyName },
+//            success: function (response) {
+//                alert("hell");
+//            },
+//            error: function () { alert("fail") }
+//        });
+//    });
+//});
+
+//$(function(){
+//    $(".js-showtextbox").click(function () {
+//        $(".js-div").toggle();
+//    });
+//})

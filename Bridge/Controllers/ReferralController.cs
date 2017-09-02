@@ -85,17 +85,30 @@ namespace Bridge.Controllers
             var candidateId = User.Identity.GetUserId();
             var referral = new Referral
             {
-
                 ReferralName = viewModel.ReferralName,
                 ResumeId = viewModel.ResumeId,
                 CandidateId = candidateId,
                 DegreeId = viewModel.DegreeId,
                 CoverLetterId = viewModel.CoverLetterId,
             };
-            if (viewModel.CompanyId.HasValue)
+
+            if (!string.IsNullOrEmpty(viewModel.TempCompany))
+            {
+                var newCompany = new Company
+                {
+                    CompanyName = viewModel.TempCompany
+                };
+                newCompany.Referrals.Add(referral);
+                _context.Companies.Add(newCompany); ;
+            }
+            else
+            {
                 referral.CompanyId = viewModel.CompanyId.Value;
-            _context.Referrals.Add(referral);
+                _context.Referrals.Add(referral);
+                _context.SaveChanges();
+            }
             _context.SaveChanges();
+
             return RedirectToAction("ReferralCenter");
         }
 
