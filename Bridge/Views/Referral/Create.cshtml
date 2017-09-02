@@ -25,17 +25,17 @@
                 <div class="col-md-10">
                     @Html.DropDownListFor(m => m.CompanyId, Model.Companies, "Please Select", new { @class = "form-control", data_url = Url.Action("ListOfCoverLetterByCompanyId", "Referral") })
                     @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
-                </div>
+                    <a type="button"
+                       class="btn"
+                       href="#article-editor"
+                       data-toggle="modal">Click me</a>  </div>
             </div>
-            <div id="companyfind">
-                Did not find the company looking for?
-            </div>
-
-            <div class="form-group onclick" style="display:none;">
-                @Html.LabelFor(model => model.ReferralName, htmlAttributes: new { @class = "control-label col-md-2" })
+           
+            <div class="form-group js-div" style="display:none;">
+                @Html.LabelFor(model => model.TempCompany, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ReferralName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ReferralName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.TempCompany, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TempCompany, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -95,4 +95,42 @@
         </div>
     }
 }
+
+
+@section Scripts {
+    
+}
+
+
+
+    @*<div class="modal fade" id="article-editor">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TempCompany, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TempCompany, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TempCompany, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary mybtn" data-url ="Url.Action('ListOfCoverLetterByCompanyId', 'Referral')">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
 

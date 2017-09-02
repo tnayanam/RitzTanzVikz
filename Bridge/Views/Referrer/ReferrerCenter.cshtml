@@ -13,10 +13,10 @@
             @Html.DisplayNameFor(model => model.CoverLetter.CoverLetterName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Degree.Name)
+            @Html.DisplayNameFor(model => model.Degree.DegreeName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Company.Name)
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Resume.ResumeName)
@@ -43,10 +43,10 @@
                     <a href="@Url.Action("Details", "CoverLetter", new { coverLetterId = @item.CoverLetterId})">@Html.DisplayFor(modelItem => item.CoverLetter.CoverLetterName)</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Degree.Name)
+                    @Html.DisplayFor(modelItem => item.Degree.DegreeName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Company.Name)
+                    @Html.DisplayFor(modelItem => item.Company.CompanyName)
                 </td>
                 <td>
                     <a href="@Url.Action("Details", "Resume", new { resumeId = @item.ResumeId})">@Html.DisplayFor(modelItem => item.Resume.ResumeName)</a>

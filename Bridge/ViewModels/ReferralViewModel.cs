@@ -12,6 +12,11 @@ namespace Bridge.ViewModels
 
         public bool IsCoverLetterExists { get; set; }
 
+        //  [RequiredIf("CompanyId", "4", ErrorMessage = "asdfsdfsa")]
+        //[Display(Name = "Other Company")]
+        public string TempCompany { get; set; }
+
+
         [Display(Name = "Experience(months)")]
         [Range(1, int.MaxValue, ErrorMessage = "Experience should be greater than 0.")]
         public int Experience { get; set; }

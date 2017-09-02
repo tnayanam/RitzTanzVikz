@@ -7,6 +7,13 @@
         if (!companyId) {
             return;
         }
+        if (companyId == 4)
+        {
+            $('.js-div').show();
+        }
+        else {
+            $('.js-div').hide();
+        }
         $.ajax({
             url: url,
             type: 'POST',
@@ -22,15 +29,16 @@
     });
 })
 
-
 $(function () {
-    //var companyFind = $('#companyfind');
-    $('#companyfind').click(function () {
-        debugger;
-
-        $(".onclick").show();
+    $('.mybtn').click(function () {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: { companyName: companyName },
+            success: function (response) {
+                alert("hell");
+            },
+            error: function () { alert("fail") }
+        });
     });
-})
-
-
-
+});
