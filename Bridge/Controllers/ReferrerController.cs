@@ -62,9 +62,9 @@ namespace Bridge.Controllers
                 }
             }
             _context.SaveChanges();
+
             return RedirectToAction("ReferralCenter");
         }
-
 
         public ActionResult ReferredCandidates()
         {
@@ -72,6 +72,12 @@ namespace Bridge.Controllers
             var referrals = _context.Referrals.Where(r => r.ReferrerId == referrerId);
 
             return View(referrals);
+        }
+
+        public ActionResult Details(string candidateId)
+        {
+            var candidate = _context.Users.Where(u => u.Id == candidateId).SingleOrDefault();
+            return View(candidate);
         }
     }
 }

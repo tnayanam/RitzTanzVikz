@@ -18,7 +18,6 @@ namespace Bridge.Models
         public string ContentType { get; set; }
 
         public byte[] Content { get; set; }
-        // end
 
         public int DegreeId { get; set; }
         public virtual Degree Degree { get; set; }

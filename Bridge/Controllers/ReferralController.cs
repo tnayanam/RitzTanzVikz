@@ -83,6 +83,7 @@ namespace Bridge.Controllers
         public ActionResult Create(ReferralViewModel viewModel)
         {
             var candidateId = User.Identity.GetUserId();
+
             var referral = new Referral
             {
                 ReferralName = viewModel.ReferralName,
@@ -105,7 +106,6 @@ namespace Bridge.Controllers
             {
                 referral.CompanyId = viewModel.CompanyId.Value;
                 _context.Referrals.Add(referral);
-                _context.SaveChanges();
             }
             _context.SaveChanges();
 

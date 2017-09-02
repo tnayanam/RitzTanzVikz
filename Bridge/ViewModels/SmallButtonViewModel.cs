@@ -11,6 +11,7 @@ namespace Bridge.ViewModels
         public int? ReferralId { get; set; }
         public int? ResumeId { get; set; }
         public int? CoverLetterId { get; set; }
+        public string CandidateId { get; set; }
         public int? SubscriptionId { get; set; }
         public string ActionParameters
         {
@@ -30,6 +31,9 @@ namespace Bridge.ViewModels
 
                 if (SubscriptionId != null & SubscriptionId > 0)
                     param.Append(string.Format("{0}={1}&", "subscriptionId", SubscriptionId));
+
+                if (CandidateId != null)
+                    param.Append(string.Format("{0}={1}&", "candidateId", CandidateId));
 
                 return param.ToString().Substring(0, param.Length - 1);
             }

@@ -210,6 +210,7 @@
     <Compile Include="Controllers\ImageFileController.cs" />
     <Compile Include="Controllers\ReferralController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReferredController.cs" />
     <Compile Include="Controllers\ReferrerController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -560,6 +561,8 @@
     <Content Include="Views\Shared\_SmallButtonPartial.cshtml" />
     <Content Include="Views\Shared\_TableButtonsPartial.cshtml" />
     <Content Include="Views\Resume\Details.cshtml" />
+    <Content Include="Views\Referred\ReferredCandidates.cshtml" />
+    <Content Include="Views\Referrer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
