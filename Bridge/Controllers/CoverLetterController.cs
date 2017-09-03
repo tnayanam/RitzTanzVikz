@@ -72,16 +72,31 @@ namespace Bridge.Controllers
                             ContentType = viewModel.UploadedCoverLetter.ContentType,
                             CoverLetterName = viewModel.CoverLetterName,
                             CandidateId = User.Identity.GetUserId(),
-                            datetime = System.DateTime.Now,
-                            CompanyId = viewModel.CompanyId
+                            datetime = System.DateTime.Now
+
                         };
-                        using (var reader = new System.IO.BinaryReader(viewModel.UploadedCoverLetter.InputStream))
+                        if (!string.IsNullOrEmpty(viewModel.TempCompany))
                         {
-                            tempcoverletter.Content = reader.ReadBytes(viewModel.UploadedCoverLetter.ContentLength);
+                            var tempCompany = new Company { CompanyName = viewModel.TempCompany };
+                            using (var reader = new System.IO.BinaryReader(viewModel.UploadedCoverLetter.InputStream))
+                            {
+                                tempcoverletter.Content = reader.ReadBytes(viewModel.UploadedCoverLetter.ContentLength);
+                            }
+                            tempCompany.CoverLetters.Add(tempcoverletter);
+                            _context.Companies.Add(tempCompany);
                         }
-                        _context.CoverLetters.Add(tempcoverletter);
+                        else
+                        {
+                            tempcoverletter.CompanyId = viewModel.CompanyId;
+                            using (var reader = new System.IO.BinaryReader(viewModel.UploadedCoverLetter.InputStream))
+                            {
+                                tempcoverletter.Content = reader.ReadBytes(viewModel.UploadedCoverLetter.ContentLength);
+                            }
+                            _context.CoverLetters.Add(tempcoverletter);
+                        }
                     }
                     _context.SaveChanges();
+
                     return RedirectToAction("CoverLetterCenter");
                 }
             }

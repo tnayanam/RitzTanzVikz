@@ -1,4 +1,5 @@
 ﻿using Bridge.CustomValidation;
+using Foolproof;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
@@ -10,6 +11,10 @@ namespace Bridge.ViewModels
     {
         public IEnumerable<SelectListItem> Companies { get; set; }
         public int CompanyId { get; set; }
+
+        [RequiredIf("CompanyId", "4", ErrorMessage = "Company Name is required")]
+        [Display(Name = "Other Company")]
+        public string TempCompany { get; set; }
 
         [Required(ErrorMessage = "Enter Cover Letter Name.")]
         [Display(Name = "CoverLetter Name")]
