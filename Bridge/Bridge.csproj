@@ -213,6 +213,7 @@
     <Compile Include="Controllers\ReferredController.cs" />
     <Compile Include="Controllers\ReferrerController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
+    <Compile Include="Controllers\RewardsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="CustomValidation\FileType.cs" />
     <Compile Include="Global.asax.cs">
@@ -563,6 +564,7 @@
     <Content Include="Views\Resume\Details.cshtml" />
     <Content Include="Views\Referred\ReferredCandidates.cshtml" />
     <Content Include="Views\Referrer\Details.cshtml" />
+    <Content Include="Views\Rewards\ShowRewards.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
