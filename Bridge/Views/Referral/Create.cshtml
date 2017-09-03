@@ -10,7 +10,7 @@
     if (!Model.IsResumeExists)
     {
         <div class="alert alert-info">
-            <strong>No Resume Found!</strong> Click on resume center and upload your Resume first.
+            <strong>No Resume Found!</strong> Click on <u><strong>@Html.ActionLink("Resume Center", "ResumeCenter", "Resume")</strong></u> and upload your Resume first.
         </div>
     }
     else
