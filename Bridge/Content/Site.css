@@ -153,3 +153,9 @@ a.list-group-item:hover, a.list-group-item:focus {
 .label {
     font-size: 95%;
 }
+
+/*Reward page badge colour*/
+.badge {
+    background-color: #ff9800;
+    margin-left:10px;
+}
