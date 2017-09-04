@@ -132,6 +132,7 @@ namespace Bridge.Controllers
             var r = _context.Referrals.Where(d => d.ReferralId == referralId);
             _context.Referrals.RemoveRange(r);
             _context.SaveChanges();
+
             return RedirectToAction("ReferralCenter");
         }
 
@@ -147,6 +148,7 @@ namespace Bridge.Controllers
             {
                 dropdown.Add(new SelectListItem { Text = cl.CoverLetterName, Value = cl.CoverLetterId.ToString() });
             }
+
             return Json(dropdown);
         }
 
@@ -157,8 +159,8 @@ namespace Bridge.Controllers
             var candidateId = User.Identity.GetUserId();
             var referral = _context.Referrals.Where(r => (r.CandidateId == candidateId) && (r.CompanyId == viewModel.CompanyId) && (r.SkillId == viewModel.SkillId) && (string.IsNullOrEmpty(r.ReferrerId))).SingleOrDefault();
             hasPreviousRequest = referral != null;
-            return Json(new { hasPreviousRequest = hasPreviousRequest });
 
+            return Json(new { hasPreviousRequest = hasPreviousRequest });
         }
 
     }

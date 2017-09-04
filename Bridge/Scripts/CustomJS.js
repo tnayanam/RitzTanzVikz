@@ -1,4 +1,6 @@
-﻿$(function () {
+﻿// show coverletter for  a particular company selected.
+
+$(function () {
     var coverLetterSelect = $('#CoverLetterId');
     $('#CompanyId').change(function () {
         var companyId = $(this).val();
@@ -29,22 +31,37 @@
     });
 })
 
-//$(function () {
-//    $('.mybtn').click(function () {
-//        $.ajax({
-//            url: url,
-//            type: 'POST',
-//            data: { companyName: companyName },
-//            success: function (response) {
-//                alert("hell");
-//            },
-//            error: function () { alert("fail") }
-//        });
-//    });
-//});
-
-//$(function(){
-//    $(".js-showtextbox").click(function () {
-//        $(".js-div").toggle();
-//    });
-//})
+// check whether referral already exist
+$(function () {
+    var canSubmit = false;
+    $('form').submit(function (e) {
+        if (!$(this).valid()) {
+            return // exit
+        }
+        if (!canSubmit) {
+            e.preventDefault();
+            var data = $('form').serialize();
+            var url = $(this).data('url');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: data,
+                success: function (response) {
+                    if (response.hasPreviousRequest) {
+                        if (confirm("You've already applied for this job. Apply again?")) {
+                            canSubmit = true;
+                            $('form').submit();
+                        }
+                    }
+                    else {
+                        canSubmit = true;
+                        $('form').submit();
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        }
+    });
+});
