@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Referral", FormMethod.Post, new { id = "job-form" }))
 {
     @Html.AntiForgeryToken()
     if (!Model.IsResumeExists)
@@ -103,29 +103,29 @@
     <script>
             var canSubmit = false;
             debugger;
-            $('form').submit(function (e) {
+            $('#job-form').submit(function (e) {
                 if (!canSubmit)
                     e.preventDefault();
-                var data = $('form').serialize();
+                var data = $('#job-form').serialize();
                 var url = '@Url.Action("CheckForExistingReferral")';
                 $.ajax({
                     url: url,
                     type: 'POST',
                     data: data,
-                    success(response){
+                    success: function (response) {
                         if (response.hasPreviousRequest)
                         {
                             if (confirm("You've already applied for this job. Apply again?")) {
                                 canSubmit = true;
-                                $('form').submit();
+                                $('#job-form').submit();
                             }
                         }
                         else {
                             canSubmit = true;
-                            $('form').submit();
+                            $('#job-form').submit();
                         }
                     },
-                    error(){
+                    error: function (){ 
                        alert("error");
                     }
                 }); 
