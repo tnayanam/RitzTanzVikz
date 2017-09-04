@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bridge.Models
 {
@@ -7,5 +8,7 @@ namespace Bridge.Models
         [Key]
         public int SkillId { get; set; }
         public string SkillName { get; set; }
+
+        public ICollection<Referral> Referrals { get; set; }
     }
 }

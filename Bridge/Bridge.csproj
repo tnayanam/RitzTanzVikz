@@ -445,6 +445,18 @@
     <Compile Include="Migrations\201708310718348_asda.Designer.cs">
       <DependentUpon>201708310718348_asda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709031916272_Asdfgsedrt.cs" />
+    <Compile Include="Migrations\201709031916272_Asdfgsedrt.Designer.cs">
+      <DependentUpon>201709031916272_Asdfgsedrt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709032046402_asdrfasdrtawerawe.cs" />
+    <Compile Include="Migrations\201709032046402_asdrfasdrtawerawe.Designer.cs">
+      <DependentUpon>201709032046402_asdrfasdrtawerawe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709032107341_asdrfasdrtaweraweere.cs" />
+    <Compile Include="Migrations\201709032107341_asdrfasdrtaweraweere.Designer.cs">
+      <DependentUpon>201709032107341_asdrfasdrtaweraweere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -745,6 +757,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708310718348_asda.resx">
       <DependentUpon>201708310718348_asda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709031916272_Asdfgsedrt.resx">
+      <DependentUpon>201709031916272_Asdfgsedrt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709032046402_asdrfasdrtawerawe.resx">
+      <DependentUpon>201709032046402_asdrfasdrtawerawe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709032107341_asdrfasdrtaweraweere.resx">
+      <DependentUpon>201709032107341_asdrfasdrtaweraweere.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

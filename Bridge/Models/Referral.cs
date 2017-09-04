@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bridge.Models
 {
@@ -9,6 +10,8 @@ namespace Bridge.Models
 
         [Display(Name = "REFERRALS")]
         public string ReferralName { get; set; }
+
+        public DateTime dateTime { get; set; }
 
         //docment proof related stuff
         [StringLength(255)]
@@ -21,6 +24,9 @@ namespace Bridge.Models
 
         public int DegreeId { get; set; }
         public virtual Degree Degree { get; set; }
+
+        public int SkillId { get; set; }
+        public virtual Skill Skill { get; set; }
 
         public int? CoverLetterId { get; set; }
         public virtual CoverLetter CoverLetter { get; set; }

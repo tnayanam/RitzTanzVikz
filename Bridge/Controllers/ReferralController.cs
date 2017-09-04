@@ -1,6 +1,7 @@
 ﻿using Bridge.Models;
 using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -84,28 +85,41 @@ namespace Bridge.Controllers
         {
             var candidateId = User.Identity.GetUserId();
 
-            var referral = new Referral
+            // if some one has not referred it yet, then only allow the updation. 
+            var referral = _context.Referrals.Where(r => (r.CandidateId == candidateId) && (r.CompanyId == viewModel.CompanyId) && (r.SkillId == viewModel.SkillId) && (string.IsNullOrEmpty(r.ReferrerId))).SingleOrDefault();
+            if (referral != null)
             {
-                ReferralName = viewModel.ReferralName,
-                ResumeId = viewModel.ResumeId,
-                CandidateId = candidateId,
-                DegreeId = viewModel.DegreeId,
-                CoverLetterId = viewModel.CoverLetterId,
-            };
-
-            if (!string.IsNullOrEmpty(viewModel.TempCompany))
-            {
-                var newCompany = new Company
-                {
-                    CompanyName = viewModel.TempCompany
-                };
-                newCompany.Referrals.Add(referral);
-                _context.Companies.Add(newCompany); ;
+                referral.ResumeId = viewModel.ResumeId;
+                referral.CoverLetterId = viewModel.CoverLetterId;
+                referral.dateTime = DateTime.Now;
             }
             else
             {
-                referral.CompanyId = viewModel.CompanyId.Value;
-                _context.Referrals.Add(referral);
+                referral = new Referral
+                {
+                    ReferralName = viewModel.ReferralName,
+                    ResumeId = viewModel.ResumeId,
+                    CandidateId = candidateId,
+                    DegreeId = viewModel.DegreeId,
+                    CoverLetterId = viewModel.CoverLetterId,
+                    SkillId = viewModel.SkillId.Value,
+                    dateTime = DateTime.Now
+                };
+
+                if (!string.IsNullOrEmpty(viewModel.TempCompany))
+                {
+                    var newCompany = new Company
+                    {
+                        CompanyName = viewModel.TempCompany
+                    };
+                    newCompany.Referrals.Add(referral);
+                    _context.Companies.Add(newCompany); ;
+                }
+                else
+                {
+                    referral.CompanyId = viewModel.CompanyId.Value;
+                    _context.Referrals.Add(referral);
+                }
             }
             _context.SaveChanges();
 
@@ -135,5 +149,17 @@ namespace Bridge.Controllers
             }
             return Json(dropdown);
         }
+
+        [HttpPost]
+        public JsonResult CheckForExistingReferral(ReferralViewModel viewModel)
+        {
+            bool hasPreviousRequest = false;
+            var candidateId = User.Identity.GetUserId();
+            var referral = _context.Referrals.Where(r => (r.CandidateId == candidateId) && (r.CompanyId == viewModel.CompanyId) && (r.SkillId == viewModel.SkillId) && (string.IsNullOrEmpty(r.ReferrerId))).SingleOrDefault();
+            hasPreviousRequest = referral != null;
+            return Json(new { hasPreviousRequest = hasPreviousRequest });
+
+        }
+
     }
 }

@@ -81,6 +81,13 @@ namespace Bridge.Models
                 .HasForeignKey(c => c.CompanyId).
                 WillCascadeOnDelete(false);
 
+            // one skills can be there in many referrals
+            // one referral must have one skill
+            dBModelBuilder.Entity<Skill>()
+                .HasMany(r => r.Referrals)
+                .WithRequired(s => s.Skill)
+                .HasForeignKey(s => s.SkillId);
+
             base.OnModelCreating(dBModelBuilder);
         }
     }

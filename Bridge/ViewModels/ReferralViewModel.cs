@@ -37,7 +37,8 @@ namespace Bridge.ViewModels
         public IEnumerable<SelectListItem> Degrees { get; set; }
 
         [Display(Name = "Skill")]
-        public int SkillId { get; set; }
+        [Required]
+        public int? SkillId { get; set; }
         public IEnumerable<SelectListItem> Skills { get; set; }
 
         [Display(Name = "Company Name")]

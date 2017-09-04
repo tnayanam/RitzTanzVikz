@@ -98,10 +98,6 @@
 }
 
 
-@section Scripts {
-
-}
-
 
 
 @*<div class="modal fade" id="article-editor">
@@ -133,5 +129,36 @@
     </div>*@
 
 
-
-
+@section scripts {
+    <script>
+            var canSubmit = false;
+            debugger;
+            $('form').submit(function (e) {
+                if (!canSubmit)
+                    e.preventDefault();
+                var data = $('form').serialize();
+                var url = '@Url.Action("CheckForExistingReferral")';
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: data,
+                    success(response){
+                        if (response.hasPreviousRequest)
+                        {
+                            if (confirm("You've already applied for this job. Apply again?")) {
+                                canSubmit = true;
+                                $('form').submit();
+                            }
+                        }
+                        else {
+                            canSubmit = true;
+                            $('form').submit();
+                        }
+                    },
+                    error(){
+                       alert("error");
+                    }
+                }); 
+            });
+        </script>
+    }
