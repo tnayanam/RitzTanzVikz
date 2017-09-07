@@ -84,14 +84,16 @@ namespace Bridge.Controllers
         public ActionResult Create(ReferralViewModel viewModel)
         {
             var candidateId = User.Identity.GetUserId();
-
-            // if some one has not referred it yet, then only allow the updation. 
-            var referral = _context.Referrals.Where(r => (r.CandidateId == candidateId) && (r.CompanyId == viewModel.CompanyId) && (r.SkillId == viewModel.SkillId) && (string.IsNullOrEmpty(r.ReferrerId))).SingleOrDefault();
+            var referral = _context.Referrals
+                     .Where(r => ((r.CandidateId == candidateId)
+                      && (r.CompanyId == viewModel.CompanyId)
+                      && (r.SkillId == viewModel.SkillId))).SingleOrDefault();
             if (referral != null)
             {
                 referral.ResumeId = viewModel.ResumeId;
                 referral.CoverLetterId = viewModel.CoverLetterId;
                 referral.dateTime = DateTime.Now;
+                referral.ReferralName = viewModel.ReferralName;
             }
             else
             {
@@ -157,8 +159,25 @@ namespace Bridge.Controllers
         {
             bool hasPreviousRequest = false;
             var candidateId = User.Identity.GetUserId();
-            var referral = _context.Referrals.Where(r => (r.CandidateId == candidateId) && (r.CompanyId == viewModel.CompanyId) && (r.SkillId == viewModel.SkillId) && (string.IsNullOrEmpty(r.ReferrerId))).SingleOrDefault();
-            hasPreviousRequest = referral != null;
+
+            if (_context.Referrals
+                .Any(r => ((r.CandidateId == candidateId)
+                               && (r.CompanyId == viewModel.CompanyId)
+                               && (r.SkillId == viewModel.SkillId))))
+            {
+                if (_context.Referrals
+               .Any(r => ((r.CandidateId == candidateId)
+                              && (r.CompanyId == viewModel.CompanyId)
+                              && (r.SkillId == viewModel.SkillId))
+                              && r.ReferralInstances
+                              .Any(e => (e.ReferrerId != null) && (e.ReferralStatus == "Referred"))))
+                {
+                    hasPreviousRequest = false;
+                }
+                else
+                    hasPreviousRequest = true;
+
+            }
 
             return Json(new { hasPreviousRequest = hasPreviousRequest });
         }

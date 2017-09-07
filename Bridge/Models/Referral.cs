@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bridge.Models
 {
     public class Referral
     {
+        public Referral()
+        {
+            ReferralInstances = new Collection<ReferralInstance>();
+        }
+
         [Key]
         public int ReferralId { get; set; }
 
@@ -40,7 +47,9 @@ namespace Bridge.Models
         public string CandidateId { get; set; }
         public virtual ApplicationUser Candidate { get; set; }
 
-        public string ReferrerId { get; set; }
-        public virtual ApplicationUser Referrer { get; set; }
+        //public string ReferrerId { get; set; }
+        //public virtual ApplicationUser Referrer { get; set; }
+
+        public ICollection<ReferralInstance> ReferralInstances { get; set; }
     }
 }

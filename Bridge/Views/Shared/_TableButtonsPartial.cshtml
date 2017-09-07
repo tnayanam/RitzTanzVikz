@@ -1,7 +1,7 @@
 ﻿@model Bridge.ViewModels.SmallButtonViewModel
 @using Bridge.ViewModels
 
-<td style="width: 120px;">
+<td>
     <div class="btn-group" role="group">
         @Html.Partial("_SmallButtonPartial",
                new SmallButtonViewModel
@@ -26,16 +26,15 @@
                   CoverLetterId = Model.CoverLetterId,
                   CandidateId = Model.CandidateId
               })
-        @Html.Partial("_SmallButtonPartial",
-               new SmallButtonViewModel
-               {
-                   Action = "Delete",
-                   ButtonType = "btn-danger",
-                   Glyph = "trash",
-                   Text = "Delete button",
-                   ReferralId = Model.ReferralId,
-                   ResumeId = Model.ResumeId,
-                   CoverLetterId = Model.CoverLetterId
-               })
+
+      @using (Html.BeginForm("Delete",null ,FormMethod.Post, new { @class = "delete-form css-inline" }))
+      {
+          @Html.AntiForgeryToken()
+          @Html.HiddenFor(m=>m.ResumeId)
+          @Html.HiddenFor(m => m.CoverLetterId)
+        <button type="submit" class="btn btn-danger css-btn-style">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      }
     </div>
 </td>

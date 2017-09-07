@@ -1,31 +1,33 @@
-﻿@model Bridge.Models.Referral
+﻿@model Bridge.ViewModels.ReferrerInstanceViewModel
 
 @{
     ViewBag.Title = "ReferralConfirmation";
 }
 
 <h2>ReferralConfirmation</h2>
-@using (Html.BeginForm("ReferralConfirmation", "Referrer", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        
-    @Html.AntiForgeryToken()
 
+
+@using (Html.BeginForm("ReferralConfirmation", "Referrer", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
-        <h4>Referral</h4>
+        <h4>ReferrerInstanceViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ReferralId)
 
         <div class="form-group">
-            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.UploadedConfirmProof, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" id="Avatar" name="upload" />
+                @Html.TextBoxFor(m => m.UploadedConfirmProof, new { type = "file" })
+                @Html.ValidationMessageFor(model => model.UploadedConfirmProof, "*", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

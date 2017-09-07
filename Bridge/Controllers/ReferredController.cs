@@ -22,9 +22,9 @@ namespace Bridge.Controllers
         public ActionResult ReferredCandidates()
         {
             var referrerId = User.Identity.GetUserId();
-            var referrals = _context.Referrals.Where(r => r.ReferrerId == referrerId);
-
-            return View(referrals);
+            var referrals = _context.ReferralInstances.Where(r => (r.ReferrerId == referrerId));
+            var referralss = _context.Referrals.Where(r => (r.ReferralInstances == referrals));
+            return View(referralss);
         }
     }
 }

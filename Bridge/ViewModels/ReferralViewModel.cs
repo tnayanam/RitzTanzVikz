@@ -18,7 +18,7 @@ namespace Bridge.ViewModels
         public string TempCompany { get; set; }
 
         [Display(Name = "Experience(months)")]
-        [Range(0, int.MaxValue, ErrorMessage = "Experience should be greater than 0.")]
+        [Range(0, int.MaxValue, ErrorMessage = "Experience should be greater than or equal to 0.")]
         public int Experience { get; set; }
 
         [Display(Name = "Referral Name")]

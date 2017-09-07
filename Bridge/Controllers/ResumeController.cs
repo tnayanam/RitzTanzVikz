@@ -11,7 +11,6 @@ namespace Bridge.Controllers
     //[Authorize(Roles = "Candidate")]
     public class ResumeController : Controller
     {
-
         private ApplicationDbContext _context;
 
         public ResumeController()
@@ -22,41 +21,59 @@ namespace Bridge.Controllers
         public ActionResult ResumeCenter()
         {
             var candidateId = User.Identity.GetUserId();
-            var resumeList = _context.Resumes.Where(r => r.CandidateId == candidateId).OrderByDescending(r => r.datetime).ToList();
+            var resumeList = _context
+                .Resumes.Where(r => r.CandidateId == candidateId)
+                .OrderByDescending(r => r.datetime);
+
             return View(resumeList);
         }
 
-        public FileContentResult Download(int? resumeId)
+        public FileContentResult Download(int resumeId)
         {
-            var temp = _context.Resumes.Where(f => f.ResumeId == resumeId).SingleOrDefault();
+            var temp = _context
+                .Resumes.Where(f => f.ResumeId == resumeId)
+                .SingleOrDefault();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             fileRes.FileDownloadName = temp.FileName;
+
             return fileRes;
         }
 
-        public FileStreamResult GetPDF(int? resumeId)
+        //ToDo: Need to code preview functionality.
+        public FileStreamResult GetPDF(int resumeId)
         {
-            var temp = _context.Resumes.Where(f => f.ResumeId == resumeId).SingleOrDefault();
+            var temp = _context
+                .Resumes
+                .Where(f => f.ResumeId == resumeId)
+                .SingleOrDefault();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
-            var streamResult = new FileStreamResult(new MemoryStream(fileRes.FileContents),
-                                        fileRes.ContentType);
+            var streamResult = new FileStreamResult(new MemoryStream(fileRes.FileContents), fileRes.ContentType);
+
             return streamResult;
         }
 
-        public FileContentResult Details(int? resumeId)
+        public FileContentResult Details(int resumeId)
         {
-            var temp = _context.Resumes.Where(f => f.ResumeId == resumeId).SingleOrDefault();
+            var temp = _context
+                .Resumes
+                .Where(f => f.ResumeId == resumeId)
+                .Single();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             fileRes.FileDownloadName = temp.FileName;
+
             return fileRes;
         }
 
-        // Todo: Need to make it a POST Request
-        public ActionResult Delete(int? resumeId)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int resumeId)
         {
-            var r = _context.Resumes.Where(c => c.ResumeId == resumeId);
-            _context.Resumes.RemoveRange(r);
+            var r = _context
+                .Resumes
+                .Where(c => c.ResumeId == resumeId).Single();
+            _context.Resumes.Remove(r);
             _context.SaveChanges();
+
             return RedirectToAction("ResumeCenter");
         }
 

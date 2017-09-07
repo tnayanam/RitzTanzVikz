@@ -18,7 +18,6 @@
                     @Html.DisplayNameFor(model => model.datetime)
                 </th>
                 <th>Options</th>
-                <th>@*Options*@</th>
                 <th></th>
             </tr>
         </thead>
@@ -30,7 +29,6 @@
         {
             foreach (var item in Model)
             {
-                <a href="@Url.Action("GetPDF", "Resume", new { resumeId = @item.ResumeId})">asdas</a>
                 <tbody>
                     <tr>
                         <td>
@@ -39,13 +37,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.datetime)
                         </td>
-                        @*<td>
-                            @Html.ActionLink("Delete", "Delete", new { resumeId = item.ResumeId }, new { @class = "js-popup" })
-                        </td>*@
-                        @Html.Partial("_TableButtonsPartial", new SmallButtonViewModel
-                       {
-                           ResumeId = item.ResumeId
-                       })
+                        @Html.Partial("_TableButtonsPartial", new SmallButtonViewModel{
+                       ResumeId = item.ResumeId
+                   })
                         <td></td>
                     </tr>
                 </tbody>
@@ -54,13 +48,15 @@
     </table>
 </div>
 
-
-
+     @foreach (var item in Model)
+            {
+<a href="@Url.Action("GetPDF", "Resume", new { resumeId = @item.ResumeId})">asdas</a>
+}
 @*@section Scripts {
-    <script>
-        $('.js-popup').on('click', function () { return confirm('are you sure?'); });
-    </script>
-}*@
+        <script>
+            $('.js-popup').on('click', function () { return confirm('are you sure?'); });
+        </script>
+    }*@
 
 
 

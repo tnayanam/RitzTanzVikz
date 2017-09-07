@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Bridge.Models.CoverLetter>
-    @using Bridge.ViewModels
+@using Bridge.ViewModels
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -14,7 +14,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.datetime)
                 </th>
-                @*<th>Options</th>*@
                 <th>Options</th>
                 <th></th>
             </tr>
@@ -35,9 +34,6 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.datetime)
                         </td>
-                        @*<td>
-                            @Html.ActionLink("Delete", "Delete", new { coverLetterId = @item.CoverLetterId }, new { @class = "js-popup" })
-                        </td>*@
                         @Html.Partial("_TableButtonsPartial", new SmallButtonViewModel
                    {
                        CoverLetterId = item.CoverLetterId
@@ -51,27 +47,27 @@
 </div>
 
 @*@section Scripts
-{
-    <script>
-        $('.js-popup').on('click', function () { return confirm('are you sure?'); });
+    {
+        <script>
+            $('.js-popup').on('click', function () { return confirm('are you sure?'); });
 
-    </script>
-    @*<script>
-            $('.js-popup').on('click', function (e) {
-                if (confirm("Are you sure?") == true) {
-
-                    $(function () {
-                            e.preventDefault();
-                            $.post($(this).attr("href"), function (data) {
-                                // got the result in data variable. do whatever you want now
-                                //may be reload the page
-                            });
-                    });
-                } else {
-                    txt = "You pressed Cancel!";
-                }
-            });
         </script>
-}*@
+        @*<script>
+                $('.js-popup').on('click', function (e) {
+                    if (confirm("Are you sure?") == true) {
+
+                        $(function () {
+                                e.preventDefault();
+                                $.post($(this).attr("href"), function (data) {
+                                    // got the result in data variable. do whatever you want now
+                                    //may be reload the page
+                                });
+                        });
+                    } else {
+                        txt = "You pressed Cancel!";
+                    }
+                });
+            </script>
+    }*@
 
 

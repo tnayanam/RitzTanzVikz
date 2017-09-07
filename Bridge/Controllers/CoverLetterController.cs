@@ -20,26 +20,34 @@ namespace Bridge.Controllers
         // GET: Resume
         public ActionResult CoverLetterCenter()
         {
-            var userId = User.Identity.GetUserId();
-            var coverLetterList = _context.CoverLetters.Where(r => r.CandidateId == userId).OrderByDescending(r => r.datetime).ToList();
+            var candidateId = User.Identity.GetUserId();
+            var coverLetterList = _context.CoverLetters
+                .Where(r => r.CandidateId == candidateId)
+                .OrderByDescending(r => r.datetime);
+
             return View(coverLetterList);
         }
 
         public FileContentResult Details(int? coverLetterId)
         {
-            var temp = _context.CoverLetters.Where(f => f.CoverLetterId == coverLetterId).SingleOrDefault();
-            var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
-            fileRes.FileDownloadName = temp.FileName;
+            var coverLetter = _context.CoverLetters
+                .Where(f => f.CoverLetterId == coverLetterId)
+                .Single();
+            var fileRes = new FileContentResult(coverLetter.Content.ToArray(), coverLetter.ContentType);
+            fileRes.FileDownloadName = coverLetter.FileName;
+
             return fileRes;
         }
 
-        //[HttpPost]
-        // ToDo Need to make it a post request
-        public ActionResult Delete(int? coverLetterId)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int coverLetterId)
         {
-            var r = _context.CoverLetters.Where(c => c.CoverLetterId == coverLetterId);
-            _context.CoverLetters.RemoveRange(r);
+            var r = _context.CoverLetters
+                .Where(c => c.CoverLetterId == coverLetterId).Single();
+            _context.CoverLetters.Remove(r);
             _context.SaveChanges();
+
             return RedirectToAction("CoverLetterCenter");
         }
 
@@ -53,6 +61,7 @@ namespace Bridge.Controllers
                     Value = x.CompanyId.ToString()
                 })
             };
+
             return View(viewModel);
         }
 
@@ -105,6 +114,7 @@ namespace Bridge.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
+
             return View();
         }
     }

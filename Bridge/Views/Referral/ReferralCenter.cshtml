@@ -43,7 +43,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Resume.ResumeName)
                             </td>
-                            <td>
+                            @*<td>
                                 @if (string.IsNullOrEmpty(item.ReferrerId))
                                 {
                                     <span class="label label-info">Pending</span>
@@ -52,7 +52,7 @@
                                 {
                                     <span class="label label-success">Referred</span>
                                 }
-                            </td>
+                            </td>*@
                             @Html.Partial("_TableButtonsPartial", new SmallButtonViewModel
                             {
                               ReferralId = item.ReferralId

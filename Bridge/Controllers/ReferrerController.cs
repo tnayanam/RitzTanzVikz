@@ -1,4 +1,5 @@
 ﻿using Bridge.Models;
+using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
@@ -21,27 +22,51 @@ namespace Bridge.Controllers
         {
             var referrerId = User.Identity.GetUserId();
             var companyId = _context.Users.Where(r => r.Id == referrerId).Select(r => r.CompanyId).SingleOrDefault();
-            var referrals = _context.Referrals.Where(r => r.CompanyId == companyId && r.ReferrerId == null)
+
+            var referrals = _context.Referrals.Where(r => (r.CompanyId == companyId) && (r.ReferralInstances.Count() == 0));
+            var refer = _context.Referrals.Where(r => (r.CompanyId == companyId) && r.ReferralInstances.Any(e => (e.ReferrerId != null) && (e.ReferralStatus != "Referred")));
+            if (refer.Count() > 0)
+            {
+                var e2 = referrals.Except(refer)
+                 .Include("Company")
+               .Include("CoverLetter")
+               .Include("Resume")
+               .Include("Degree")
+               .Include("Candidate");
+                return View(e2);
+
+            }
+
+            var e1 = refer.Concat(referrals)
            .Include("Company")
-            .Include("CoverLetter")
-            .Include("Resume")
-            .Include("Degree")
-            .Include("Candidate");
-            return View(referrals);
+           .Include("CoverLetter")
+           .Include("Resume")
+           .Include("Degree")
+           .Include("Candidate");
+            return View(e1);
         }
 
-        //public ActionResult ReferralConfirmation(int referralId)
+
+        //public ActionResult ReferralConfirmation(Referral referral)
         //{
-        //    var referrals = _context.Referrals.Where(r => r.ReferralId == referralId);
+        //    var referrals = _context.Referrals.Where(r => r.ReferralId == referral.ReferralId).SingleOrDefault();
 
         //    return View(referrals);
         //}
 
         public ActionResult ReferralConfirmation(Referral referral)
         {
-            var referrals = _context.Referrals.Where(r => r.ReferralId == referral.ReferralId).SingleOrDefault();
+            var viewModel = new ReferrerInstanceViewModel
+            {
+                ReferralId = referral.ReferralId,
+                ReferralStatus = _context.ReferralStatus.Select(x => new SelectListItem
+                {
+                    Text = x.Status,
+                    Value = x.ReferralStatusId.ToString()
+                })
+            };
 
-            return View(referrals);
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -51,26 +76,33 @@ namespace Bridge.Controllers
             var referrerId = User.Identity.GetUserId();
             var model = _context.Referrals.Where(r => r.ReferralId == referral.ReferralId).SingleOrDefault();
 
+            var abc = new ReferralInstance();
+
             if (upload != null && upload.ContentLength > 0)
             {
                 model.FileName = System.IO.Path.GetFileName(upload.FileName);
                 model.ContentType = upload.ContentType;
-                model.ReferrerId = referrerId;
+                abc.ReferrerId = referrerId;
+                abc.ReferralId = model.ReferralId;
+                abc.ReferralStatus = "referred";
                 using (var reader = new System.IO.BinaryReader(upload.InputStream))
                 {
                     model.Content = reader.ReadBytes(upload.ContentLength);
                 }
             }
+            _context.ReferralInstances.Add(abc);
             _context.SaveChanges();
 
-            return RedirectToAction("ReferralCenter");
+            return RedirectToAction("ReferrerCenter");
         }
 
         public ActionResult ReferredCandidates()
         {
             var referrerId = User.Identity.GetUserId();
-            var referrals = _context.Referrals.Where(r => r.ReferrerId == referrerId);
 
+            var referrals = _context.ReferralInstances
+                 .Where(r => (r.ReferrerId == referrerId) && (r.ReferralStatus == "referred"))
+                    .Select(r => r.Referral);
             return View(referrals);
         }
 

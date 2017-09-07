@@ -1,6 +1,5 @@
 ﻿using Bridge.Models;
 using Microsoft.AspNet.Identity;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace Bridge.Controllers
@@ -18,8 +17,7 @@ namespace Bridge.Controllers
         public ActionResult ShowRewards()
         {
             var candidateId = User.Identity.GetUserId();
-            var referrerCount = _context.Referrals.Where(r => (r.CandidateId == candidateId) && (!string.IsNullOrEmpty(r.ReferrerId))).Count();
-            ViewBag.ReferrerCount = 10 - referrerCount;
+            // _context.Referrals.Where(s => s.CandidateId == candidateId && (s.ReferralInstances.Any(c => c.ReferralStatus)));
             return View();
         }
     }

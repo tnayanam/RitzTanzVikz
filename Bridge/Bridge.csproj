@@ -457,6 +457,22 @@
     <Compile Include="Migrations\201709032107341_asdrfasdrtaweraweere.Designer.cs">
       <DependentUpon>201709032107341_asdrfasdrtaweraweere.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709042132196_qwer.cs" />
+    <Compile Include="Migrations\201709042132196_qwer.Designer.cs">
+      <DependentUpon>201709042132196_qwer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709050423415_asdfasdefasdrtfqwsedr.cs" />
+    <Compile Include="Migrations\201709050423415_asdfasdefasdrtfqwsedr.Designer.cs">
+      <DependentUpon>201709050423415_asdfasdefasdrtfqwsedr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709062341302_Asdfr.cs" />
+    <Compile Include="Migrations\201709062341302_Asdfr.Designer.cs">
+      <DependentUpon>201709062341302_Asdfr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709070412584_aas cd   .cs" />
+    <Compile Include="Migrations\201709070412584_aas cd   .Designer.cs">
+      <DependentUpon>201709070412584_aas cd   .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -467,6 +483,8 @@
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\GmailEmailService.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ReferralInstance.cs" />
+    <Compile Include="Models\ReferralStatus.cs" />
     <Compile Include="ViewModels\CoverLetterViewModel.cs" />
     <Compile Include="ViewModels\ReferralViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -474,6 +492,7 @@
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ReferrerInstanceViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResumeViewModel.cs" />
     <Compile Include="ViewModels\SmallButtonViewModel.cs" />
@@ -573,7 +592,6 @@
     <Content Include="Views\CoverLetter\UploadCoverLetter.cshtml" />
     <Content Include="Views\Shared\_SmallButtonPartial.cshtml" />
     <Content Include="Views\Shared\_TableButtonsPartial.cshtml" />
-    <Content Include="Views\Resume\Details.cshtml" />
     <Content Include="Views\Referred\ReferredCandidates.cshtml" />
     <Content Include="Views\Referrer\Details.cshtml" />
     <Content Include="Views\Rewards\ShowRewards.cshtml" />
@@ -766,6 +784,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709032107341_asdrfasdrtaweraweere.resx">
       <DependentUpon>201709032107341_asdrfasdrtaweraweere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709042132196_qwer.resx">
+      <DependentUpon>201709042132196_qwer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709050423415_asdfasdefasdrtfqwsedr.resx">
+      <DependentUpon>201709050423415_asdfasdefasdrtfqwsedr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709062341302_Asdfr.resx">
+      <DependentUpon>201709062341302_Asdfr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709070412584_aas cd   .resx">
+      <DependentUpon>201709070412584_aas cd   .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

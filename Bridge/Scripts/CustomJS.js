@@ -34,13 +34,14 @@ $(function () {
 // check whether referral already exist
 $(function () {
     var canSubmit = false;
-    $('form').submit(function (e) {
+    $('#referralform').submit(function (e) {
         if (!$(this).valid()) {
             return // exit
         }
         if (!canSubmit) {
             e.preventDefault();
-            var data = $('form').serialize();
+            debugger;
+            var data = $('#referralform').serialize();
             var url = $(this).data('url');
             $.ajax({
                 url: url,
@@ -48,14 +49,15 @@ $(function () {
                 data: data,
                 success: function (response) {
                     if (response.hasPreviousRequest) {
+                        debugger;
                         if (confirm("You've already applied for this job. Apply again?")) {
                             canSubmit = true;
-                            $('form').submit();
+                            $('#referralform').submit();
                         }
                     }
                     else {
                         canSubmit = true;
-                        $('form').submit();
+                        $('#referralform').submit();
                     }
                 },
                 error: function () {

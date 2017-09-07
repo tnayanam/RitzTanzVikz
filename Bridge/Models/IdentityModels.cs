@@ -12,6 +12,9 @@ namespace Bridge.Models
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Referral> Referrals { get; set; }
         public DbSet<Degree> Degrees { get; set; }
+        public DbSet<ReferralInstance> ReferralInstances { get; set; }
+        public DbSet<ReferralStatus> ReferralStatus { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -66,12 +69,27 @@ namespace Bridge.Models
             .HasForeignKey(u => u.CandidateId)
             .WillCascadeOnDelete(false);
 
-            //one referrer can have many referrals
+            ////one referrer can have many referrals
+            //dBModelBuilder.Entity<ApplicationUser>()
+            //.HasMany(u => u.ReferrerReferral)
+            //.WithOptional(u => u.Referrer)
+            //.HasForeignKey(u => u.ReferrerId)
+            //.WillCascadeOnDelete(false);
+
+            // one referral can be there in referral instances
+            // but if a referral instasnce exist then it must be linked to referral
+            dBModelBuilder.Entity<Referral>()
+                  .HasMany(r => r.ReferralInstances)
+                  .WithRequired(r => r.Referral)
+                  .HasForeignKey(r => r.ReferralId);
+
+            // one referrer/user can be there in many referralinstances,
+            // but if an instance exist it must be tied to a referrer.
             dBModelBuilder.Entity<ApplicationUser>()
-            .HasMany(u => u.ReferrerReferral)
-            .WithOptional(u => u.Referrer)
-            .HasForeignKey(u => u.ReferrerId)
-            .WillCascadeOnDelete(false);
+                 .HasMany(r => r.ReferralInstances)
+                 .WithRequired(r => r.Referrer)
+                 .HasForeignKey(r => r.ReferrerId).
+                 WillCascadeOnDelete(false);
 
             // one company can have many coverletters, 
             //one cover letter can belong to just one company
@@ -87,6 +105,11 @@ namespace Bridge.Models
                 .HasMany(r => r.Referrals)
                 .WithRequired(s => s.Skill)
                 .HasForeignKey(s => s.SkillId);
+
+            dBModelBuilder.Entity<ReferralStatus>()
+                .HasMany(r => r.ReferralInstances)
+                .WithRequired(r => r.ReferralState)
+                .HasForeignKey(r => r.ReferralStatusId);
 
             base.OnModelCreating(dBModelBuilder);
         }

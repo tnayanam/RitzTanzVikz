@@ -765,7 +765,6 @@ C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\bin\Microsoft.Owin.Securi
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.csprojResolveAssemblyReference.cache
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.InitialCreate.resources
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.testting.resources
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.addedfieldtoresumeclass.resources
@@ -821,10 +820,15 @@ C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migratio
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asdfwq.resources
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.se.resources
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.wqerasdAWQ.resources
-C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.csproj.GenerateResource.Cache
-C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.dll
-C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.pdb
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asda.resources
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.Asdfgsedrt.resources
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asdrfasdrtawerawe.resources
 C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asdrfasdrtaweraweere.resources
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.qwer.resources
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.csproj.GenerateResource.Cache
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.dll
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.pdb
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.asdfasdefasdrtfqwsedr.resources
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.Asdfr.resources
+C:\Users\lenovo\Desktop\demo\live1\RitzTanzVikz\Bridge\obj\Debug\Bridge.Migrations.aascd.resources
