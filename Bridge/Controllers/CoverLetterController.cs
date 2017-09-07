@@ -96,7 +96,7 @@ namespace Bridge.Controllers
                         }
                         else
                         {
-                            tempcoverletter.CompanyId = viewModel.CompanyId;
+                            tempcoverletter.CompanyId = viewModel.CompanyId.Value;
                             using (var reader = new System.IO.BinaryReader(viewModel.UploadedCoverLetter.InputStream))
                             {
                                 tempcoverletter.Content = reader.ReadBytes(viewModel.UploadedCoverLetter.ContentLength);
