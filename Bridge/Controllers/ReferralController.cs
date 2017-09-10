@@ -2,12 +2,12 @@
 using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Bridge.Controllers
 {
+    [Authorize]
     public class ReferralController : Controller
     {
         private ApplicationDbContext _context;
@@ -16,15 +16,17 @@ namespace Bridge.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        // GET: Referral
+
         public ActionResult ReferralCenter()
         {
             var candidateId = User.Identity.GetUserId();
+            // it will show only the pending ones.
             var viewModel = _context.Referrals
                 .Include("Company")
                 .Include("Resume")
                 .Include("CoverLetter")
-                .Where(r => r.CandidateId == candidateId).ToList();
+                .Include("Degree")
+                .Where(r => r.CandidateId == candidateId);
 
             return View(viewModel);
         }
@@ -32,11 +34,13 @@ namespace Bridge.Controllers
         private void ConfigureViewModel(ReferralViewModel model)
         {
             var candidateId = User.Identity.GetUserId();
-            model.Companies = _context.Companies.Select(x => new SelectListItem
+            var companies = _context.Companies.Select(x => new SelectListItem
             {
                 Text = x.CompanyName,
                 Value = x.CompanyId.ToString()
-            });
+            }).ToList();
+            companies.Insert(0, new SelectListItem { Value = "0", Text = "Other" });
+            model.Companies = companies;
             model.Degrees = _context.Degrees.Select(r => new SelectListItem
             {
                 Text = r.DegreeName,
@@ -72,42 +76,43 @@ namespace Bridge.Controllers
             }
         }
 
-        public ActionResult Create()
+        public ActionResult AddReferral()
         {
             ReferralViewModel viewModel = new ReferralViewModel();
             ConfigureViewModel(viewModel);
+
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ReferralViewModel viewModel)
+        public ActionResult AddReferral(ReferralViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                ConfigureViewModel(viewModel);
+
+                return View("AddReferral", viewModel);
+            }
+
             var candidateId = User.Identity.GetUserId();
             var referral = _context.Referrals
-                     .Where(r => ((r.CandidateId == candidateId)
-                      && (r.CompanyId == viewModel.CompanyId)
-                      && (r.SkillId == viewModel.SkillId))).SingleOrDefault();
-            if (referral != null)
-            {
-                referral.ResumeId = viewModel.ResumeId;
-                referral.CoverLetterId = viewModel.CoverLetterId;
-                referral.dateTime = DateTime.Now;
-                referral.ReferralName = viewModel.ReferralName;
-            }
-            else
+                   .Where(r => ((r.CandidateId == candidateId)
+                    && (r.CompanyId == viewModel.CompanyId)
+                    && (r.SkillId == viewModel.SkillId) && (!r.IsReferralSuccessful))).SingleOrDefault();
+            // create a new referral if there is not matched referreal entry ins found, or if found then that referral has already been accepted by some Referrer
+            if (referral == null)
             {
                 referral = new Referral
                 {
                     ReferralName = viewModel.ReferralName,
                     ResumeId = viewModel.ResumeId,
                     CandidateId = candidateId,
-                    DegreeId = viewModel.DegreeId,
+                    DegreeId = viewModel.DegreeId.Value,
                     CoverLetterId = viewModel.CoverLetterId,
                     SkillId = viewModel.SkillId.Value,
                     dateTime = DateTime.Now
                 };
-
                 if (!string.IsNullOrEmpty(viewModel.TempCompany))
                 {
                     var newCompany = new Company
@@ -123,16 +128,24 @@ namespace Bridge.Controllers
                     _context.Referrals.Add(referral);
                 }
             }
+            else
+            {
+                referral.ResumeId = viewModel.ResumeId;
+                referral.CoverLetterId = viewModel.CoverLetterId;
+                referral.dateTime = DateTime.Now;
+                referral.ReferralName = viewModel.ReferralName;
+            }
             _context.SaveChanges();
 
             return RedirectToAction("ReferralCenter");
         }
 
-        // DELETE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int referralId)
         {
-            var r = _context.Referrals.Where(d => d.ReferralId == referralId);
-            _context.Referrals.RemoveRange(r);
+            var referralToBeDeleted = _context.Referrals.Where(d => d.ReferralId == referralId).Single();
+            _context.Referrals.Remove(referralToBeDeleted);
             _context.SaveChanges();
 
             return RedirectToAction("ReferralCenter");
@@ -142,16 +155,13 @@ namespace Bridge.Controllers
         public JsonResult ListOfCoverLetterByCompanyId(int companyId)
         {
             var coverletters = _context.CoverLetters
-                .Where(c => c.CompanyId == companyId)
-                .ToList();
+                .Where(c => c.CompanyId == companyId).Select(c => new
+                {
+                    Value = c.CoverLetterId.ToString(),
+                    Text = c.CoverLetterName
+                });
 
-            var dropdown = new List<SelectListItem>();
-            foreach (var cl in coverletters)
-            {
-                dropdown.Add(new SelectListItem { Text = cl.CoverLetterName, Value = cl.CoverLetterId.ToString() });
-            }
-
-            return Json(dropdown);
+            return Json(coverletters);
         }
 
         [HttpPost]
@@ -160,24 +170,30 @@ namespace Bridge.Controllers
             bool hasPreviousRequest = false;
             var candidateId = User.Identity.GetUserId();
 
+            // if successful matching referral exists with isreferralsuccessful as true.
             if (_context.Referrals
                 .Any(r => ((r.CandidateId == candidateId)
                                && (r.CompanyId == viewModel.CompanyId)
-                               && (r.SkillId == viewModel.SkillId))))
+                               && (r.SkillId == viewModel.SkillId) && r.IsReferralSuccessful)))
             {
-                if (_context.Referrals
-               .Any(r => ((r.CandidateId == candidateId)
-                              && (r.CompanyId == viewModel.CompanyId)
-                              && (r.SkillId == viewModel.SkillId))
-                              && r.ReferralInstances
-                              .Any(e => (e.ReferrerId != null) && (e.ReferralStatus == "Referred"))))
-                {
-                    hasPreviousRequest = false;
-                }
-                else
+                // if successul referral status exists but there is more entry like simliar to that with "not succcess status" so again it'sa dupe
+                if ((_context.Referrals
+                .Any(r => ((r.CandidateId == candidateId)
+                               && (r.CompanyId == viewModel.CompanyId)
+                               && (r.SkillId == viewModel.SkillId) && !r.IsReferralSuccessful))))
                     hasPreviousRequest = true;
-
+                else
+                    //all the matched entry as success as true and no matched entry with "Not success exists" that means mark it as not duplicate.
+                    hasPreviousRequest = false;
             }
+            // if everything matches but no success entry then overwrite
+            else if (_context.Referrals
+                .Any(r => ((r.CandidateId == candidateId)
+                               && (r.CompanyId == viewModel.CompanyId)
+                               && (r.SkillId == viewModel.SkillId))))
+                hasPreviousRequest = true;
+            else
+                hasPreviousRequest = false;
 
             return Json(new { hasPreviousRequest = hasPreviousRequest });
         }

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 namespace Bridge.Controllers
 {
+    [Authorize]
     public class ImageFileController : Controller
     {
 

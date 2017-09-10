@@ -7,13 +7,15 @@ namespace Bridge.ViewModels
 {
     public class ReferralViewModel
     {
-        public int ReferralViewModelId { get; set; }
+        public int Id { get; set; }
 
         public bool IsResumeExists { get; set; }
 
+        public bool IsReferralStatus { get; set; }
+
         public bool IsCoverLetterExists { get; set; }
 
-        [RequiredIf("CompanyId", "4", ErrorMessage = "asdfsdfsa")]
+        [RequiredIf("CompanyId", "0", ErrorMessage = "Enter Company Name")]
         [Display(Name = "Other Company")]
         public string TempCompany { get; set; }
 
@@ -22,9 +24,11 @@ namespace Bridge.ViewModels
         public int Experience { get; set; }
 
         [Display(Name = "Referral Name")]
+        [Required]
         public string ReferralName { get; set; }
 
         [Display(Name = "Resume Name")]
+        [Required]
         public string ResumeName { get; set; }
 
         [Display(Name = "Resume")]
@@ -33,7 +37,8 @@ namespace Bridge.ViewModels
         public IEnumerable<SelectListItem> Resumes { get; set; }
 
         [Display(Name = "Degree")]
-        public int DegreeId { get; set; }
+        [Required]
+        public int? DegreeId { get; set; }
         public IEnumerable<SelectListItem> Degrees { get; set; }
 
         [Display(Name = "Skill")]
@@ -41,12 +46,14 @@ namespace Bridge.ViewModels
         public int? SkillId { get; set; }
         public IEnumerable<SelectListItem> Skills { get; set; }
 
+        // preventing from underposting attack
         [Display(Name = "Company Name")]
         [Required]
         public int? CompanyId { get; set; }
         public IEnumerable<SelectListItem> Companies { get; set; }
 
         // needs to have "?" because when no dropdown is selected we want to pass NULL values
+        // question marks makes sure no default value is set by the framework.
         [Display(Name = "Cover Letter")]
         public int? CoverLetterId { get; set; }
         public IEnumerable<SelectListItem> CoverLetters { get; set; }

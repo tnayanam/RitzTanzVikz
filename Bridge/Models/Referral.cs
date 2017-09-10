@@ -15,10 +15,11 @@ namespace Bridge.Models
         [Key]
         public int ReferralId { get; set; }
 
-        [Display(Name = "REFERRALS")]
         public string ReferralName { get; set; }
 
         public DateTime dateTime { get; set; }
+
+        public bool IsReferralSuccessful { get; set; } = false;
 
         //docment proof related stuff
         [StringLength(255)]
@@ -29,15 +30,18 @@ namespace Bridge.Models
 
         public byte[] Content { get; set; }
 
+        [Required]
         public int DegreeId { get; set; }
         public virtual Degree Degree { get; set; }
 
+        [Required]
         public int SkillId { get; set; }
         public virtual Skill Skill { get; set; }
 
         public int? CoverLetterId { get; set; }
         public virtual CoverLetter CoverLetter { get; set; }
 
+        [Required]
         public int ResumeId { get; set; }
         public virtual Resume Resume { get; set; }
 
@@ -46,9 +50,6 @@ namespace Bridge.Models
 
         public string CandidateId { get; set; }
         public virtual ApplicationUser Candidate { get; set; }
-
-        //public string ReferrerId { get; set; }
-        //public virtual ApplicationUser Referrer { get; set; }
 
         public ICollection<ReferralInstance> ReferralInstances { get; set; }
     }

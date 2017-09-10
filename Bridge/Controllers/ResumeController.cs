@@ -31,8 +31,7 @@ namespace Bridge.Controllers
         public FileContentResult Download(int resumeId)
         {
             var temp = _context
-                .Resumes.Where(f => f.ResumeId == resumeId)
-                .SingleOrDefault();
+                .Resumes.Where(f => f.ResumeId == resumeId).SingleOrDefault();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             fileRes.FileDownloadName = temp.FileName;
 
@@ -42,10 +41,8 @@ namespace Bridge.Controllers
         //ToDo: Need to code preview functionality.
         public FileStreamResult GetPDF(int resumeId)
         {
-            var temp = _context
-                .Resumes
-                .Where(f => f.ResumeId == resumeId)
-                .SingleOrDefault();
+            var temp = _context.Resumes
+                .Where(f => f.ResumeId == resumeId).SingleOrDefault();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             var streamResult = new FileStreamResult(new MemoryStream(fileRes.FileContents), fileRes.ContentType);
 
@@ -54,10 +51,8 @@ namespace Bridge.Controllers
 
         public FileContentResult Details(int resumeId)
         {
-            var temp = _context
-                .Resumes
-                .Where(f => f.ResumeId == resumeId)
-                .Single();
+            var temp = _context.Resumes
+                .Where(f => f.ResumeId == resumeId).Single();
             var fileRes = new FileContentResult(temp.Content.ToArray(), temp.ContentType);
             fileRes.FileDownloadName = temp.FileName;
 
@@ -68,8 +63,7 @@ namespace Bridge.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int resumeId)
         {
-            var r = _context
-                .Resumes
+            var r = _context.Resumes
                 .Where(c => c.ResumeId == resumeId).Single();
             _context.Resumes.Remove(r);
             _context.SaveChanges();

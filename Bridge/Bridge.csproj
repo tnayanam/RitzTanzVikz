@@ -473,6 +473,10 @@
     <Compile Include="Migrations\201709070412584_aas cd   .Designer.cs">
       <DependentUpon>201709070412584_aas cd   .cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709091646511_Adfcxc.cs" />
+    <Compile Include="Migrations\201709091646511_Adfcxc.Designer.cs">
+      <DependentUpon>201709091646511_Adfcxc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -579,7 +583,7 @@
     <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
     <Content Include="Views\Resume\ResumeCenter.cshtml" />
     <Content Include="Views\CoverLetter\CoverLetterCenter.cshtml" />
-    <Content Include="Views\Referral\Create.cshtml" />
+    <Content Include="Views\Referral\AddReferral.cshtml" />
     <Content Include="Views\Referral\ReferralCenter.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
@@ -796,6 +800,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709070412584_aas cd   .resx">
       <DependentUpon>201709070412584_aas cd   .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709091646511_Adfcxc.resx">
+      <DependentUpon>201709091646511_Adfcxc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

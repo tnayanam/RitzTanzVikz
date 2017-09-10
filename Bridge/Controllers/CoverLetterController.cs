@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Bridge.Controllers
 {
+    [Authorize]
     public class CoverLetterController : Controller
     {
 

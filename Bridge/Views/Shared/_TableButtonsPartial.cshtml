@@ -8,7 +8,7 @@
                {
                    Action = "Edit",
                    ButtonType = "btn-primary",
-                   Glyph = "pencil",
+                   Glyph = "pencil-square-o fa-lg",
                    Text = "Edit button",
                    ReferralId = Model.ReferralId,
                    ResumeId = Model.ResumeId,
@@ -19,7 +19,7 @@
               {
                   Action = "Details",
                   ButtonType = "btn-success",
-                  Glyph = "list",
+                  Glyph = "list-alt fa-lg",
                   Text = "Detail button",
                   ReferralId = Model.ReferralId,
                   ResumeId = Model.ResumeId,
@@ -27,14 +27,15 @@
                   CandidateId = Model.CandidateId
               })
 
-      @using (Html.BeginForm("Delete",null ,FormMethod.Post, new { @class = "delete-form css-inline" }))
-      {
-          @Html.AntiForgeryToken()
-          @Html.HiddenFor(m=>m.ResumeId)
-          @Html.HiddenFor(m => m.CoverLetterId)
-        <button type="submit" class="btn btn-danger css-btn-style">
-            <span class="glyphicon glyphicon-trash"></span>
-        </button>
-      }
+        @using (Html.BeginForm("Delete", null, FormMethod.Post, new { @class = "delete-form css-inline" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ResumeId)
+            @Html.HiddenFor(m => m.CoverLetterId)
+            @Html.HiddenFor(m => m.ReferralId)
+            <button type="submit" class="btn btn-danger css-btn-style">
+                <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+            </button>
+        }
     </div>
 </td>

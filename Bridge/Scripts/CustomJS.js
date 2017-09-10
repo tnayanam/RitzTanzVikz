@@ -9,38 +9,42 @@ $(function () {
         if (!companyId) {
             return;
         }
-        if (companyId == 4)
+        // If others option is selected in the dropdown, then no need to make an ajax call to find coverletters
+        if (companyId == 0)
         {
             $('.js-div').show();
+            coverLetterSelect.append($('<option></option>').val('').text('None'));
         }
         else {
-            $('.js-div').hide();
+            $('.js-div').hide(); $.ajax({
+                url: url,
+                type: 'POST',
+                data: { companyId: companyId },
+                success: function (response) {
+                    coverLetterSelect.append($('<option></option>').val('').text('None'));
+                    $.each(response, function (i, data) {
+                        coverLetterSelect.append($('<option></option>').val(data.Value).text(data.Text));
+                    });
+                },
+                error: function () { }
+            });
         }
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: { companyId: companyId },
-            success: function (response) {
-                coverLetterSelect.append($('<option></option>').val('').text('None'));
-                $.each(response, function (i, data) {
-                    coverLetterSelect.append($('<option></option>').val(data.Value).text(data.Text));
-                });
-            },
-            error: function () { }
-        });
     });
 })
 
 // check whether referral already exist
 $(function () {
     var canSubmit = false;
+    debugger;
     $('#referralform').submit(function (e) {
+        debugger;
+        // if Model state is not valid then return
         if (!$(this).valid()) {
             return // exit
         }
+        debugger;
         if (!canSubmit) {
             e.preventDefault();
-            debugger;
             var data = $('#referralform').serialize();
             var url = $(this).data('url');
             $.ajax({

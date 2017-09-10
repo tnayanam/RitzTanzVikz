@@ -8,42 +8,33 @@ using System.Web.Mvc;
 namespace Bridge.Controllers
 {
     //[Authorize(Roles = "Referrer")]
+    [Authorize]
     public class ReferrerController : Controller
     {
-
-        private ApplicationDbContext _context { get; set; }
+        private ApplicationDbContext _context;
 
         public ReferrerController()
         {
             _context = new ApplicationDbContext();
         }
+
         // GET: Referrer
         public ActionResult ReferrerCenter()
         {
             var referrerId = User.Identity.GetUserId();
-            var companyId = _context.Users.Where(r => r.Id == referrerId).Select(r => r.CompanyId).SingleOrDefault();
+            var companyId = _context.Users
+                .Where(r => r.Id == referrerId)
+                .Select(r => r.CompanyId).Single();
 
-            var referrals = _context.Referrals.Where(r => (r.CompanyId == companyId) && (r.ReferralInstances.Count() == 0));
-            var refer = _context.Referrals.Where(r => (r.CompanyId == companyId) && r.ReferralInstances.Any(e => (e.ReferrerId != null) && (e.ReferralStatus != "Referred")));
-            if (refer.Count() > 0)
-            {
-                var e2 = referrals.Except(refer)
-                 .Include("Company")
+            var referrals = _context.Referrals.Where(r => (r.CompanyId == companyId) && (!r.IsReferralSuccessful))
+               .Include("Company")
                .Include("CoverLetter")
                .Include("Resume")
                .Include("Degree")
                .Include("Candidate");
-                return View(e2);
+            //var refer = _context.Referrals.Where(r => (r.CompanyId == companyId) && r.ReferralInstances.Any(e => (e.ReferrerId != null) && (e.ReferralStatus != "Referred")));
 
-            }
-
-            var e1 = refer.Concat(referrals)
-           .Include("Company")
-           .Include("CoverLetter")
-           .Include("Resume")
-           .Include("Degree")
-           .Include("Candidate");
-            return View(e1);
+            return View(referrals);
         }
 
 
