@@ -7,8 +7,9 @@ namespace Bridge.Models
     {
         [Key]
         public int ReferralStatusId { get; set; }
-        public string Status { get; set; }
 
-        public ICollection<ReferralInstance> ReferralInstances { get; set; }
+        public string ReferralStatusType { get; set; }
+
+        public ICollection<ReferrerInstance> ReferrerInstances { get; set; }
     }
 }

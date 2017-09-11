@@ -15,10 +15,10 @@ namespace Bridge.Controllers
         }
 
         // GET: Rewards
-        public ActionResult ShowRewards()
+        public ActionResult SuccessfulReferrals()
         {
             var candidateId = User.Identity.GetUserId();
-            ViewBag.ReferrerCount = _context.Referrals
+            ViewBag.SuccessfulReferrals = _context.Referrals
                 .Where(s => s.CandidateId == candidateId
                 && (s.IsReferralSuccessful)).Count();
 

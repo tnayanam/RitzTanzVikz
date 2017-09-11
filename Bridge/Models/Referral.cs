@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foolproof;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ namespace Bridge.Models
     {
         public Referral()
         {
-            ReferralInstances = new Collection<ReferralInstance>();
+            ReferrerInstances = new Collection<ReferrerInstance>();
         }
 
         [Key]
@@ -29,6 +30,10 @@ namespace Bridge.Models
         public string ContentType { get; set; }
 
         public byte[] Content { get; set; }
+
+        [RequiredIf("IsReferralSuccessful", "1")]
+        public string ReferrerId { get; set; }
+        public virtual ApplicationUser Referrer { get; set; }
 
         [Required]
         public int DegreeId { get; set; }
@@ -51,6 +56,6 @@ namespace Bridge.Models
         public string CandidateId { get; set; }
         public virtual ApplicationUser Candidate { get; set; }
 
-        public ICollection<ReferralInstance> ReferralInstances { get; set; }
+        public ICollection<ReferrerInstance> ReferrerInstances { get; set; }
     }
 }

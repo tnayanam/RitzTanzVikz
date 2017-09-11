@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-
 using System.Web;
+using System.Web.Mvc;
+
 namespace Bridge.CustomValidation
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-    public class FileType : ValidationAttribute
+    public class FileType : ValidationAttribute, IClientValidatable
     {
         private List<string> ValidExtensions { get; set; }
 
@@ -26,6 +27,17 @@ namespace Bridge.CustomValidation
                 return isValidExtension;
             }
             return true;
+        }
+
+        public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+        {
+            var rule = new ModelClientValidationRule
+            {
+                ValidationType = "filetype",
+                ErrorMessage = ErrorMessageString
+            };
+            rule.ValidationParameters.Add("validtypes", string.Join(",", ValidExtensions));
+            yield return rule;
         }
     }
 }

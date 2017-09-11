@@ -91,8 +91,7 @@ namespace Bridge.Controllers
             if (!ModelState.IsValid)
             {
                 ConfigureViewModel(viewModel);
-
-                return View("AddReferral", viewModel);
+                return View(viewModel);
             }
 
             var candidateId = User.Identity.GetUserId();
@@ -154,8 +153,9 @@ namespace Bridge.Controllers
         [HttpPost]
         public JsonResult ListOfCoverLetterByCompanyId(int companyId)
         {
+            var candidateId = User.Identity.GetUserId();
             var coverletters = _context.CoverLetters
-                .Where(c => c.CompanyId == companyId).Select(c => new
+                .Where(c => (c.CompanyId == companyId) && (c.CandidateId == candidateId)).Select(c => new
                 {
                     Value = c.CoverLetterId.ToString(),
                     Text = c.CoverLetterName

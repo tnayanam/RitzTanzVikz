@@ -27,10 +27,6 @@ namespace Bridge.ViewModels
         [Required]
         public string ReferralName { get; set; }
 
-        [Display(Name = "Resume Name")]
-        [Required]
-        public string ResumeName { get; set; }
-
         [Display(Name = "Resume")]
         [Required]
         public int ResumeId { get; set; }

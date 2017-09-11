@@ -3,7 +3,6 @@ using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 namespace Bridge.Controllers
 {
@@ -18,7 +17,6 @@ namespace Bridge.Controllers
             _context = new ApplicationDbContext();
         }
 
-        // GET: Referrer
         public ActionResult ReferrerCenter()
         {
             var referrerId = User.Identity.GetUserId();
@@ -26,80 +24,89 @@ namespace Bridge.Controllers
                 .Where(r => r.Id == referrerId)
                 .Select(r => r.CompanyId).Single();
 
-            var referrals = _context.Referrals.Where(r => (r.CompanyId == companyId) && (!r.IsReferralSuccessful))
+            var referrals = _context.Referrals
+                .Where(r => ((r.CompanyId == companyId)
+                && (!r.IsReferralSuccessful))
+                && !r.ReferrerInstances.Any(e => (e.ReferrerId == referrerId) && (e.ReferralStatusId == 1)))
                .Include("Company")
                .Include("CoverLetter")
                .Include("Resume")
                .Include("Degree")
                .Include("Candidate");
-            //var refer = _context.Referrals.Where(r => (r.CompanyId == companyId) && r.ReferralInstances.Any(e => (e.ReferrerId != null) && (e.ReferralStatus != "Referred")));
 
             return View(referrals);
         }
 
+        private void ConfigureViewModel(ReferrerInstanceViewModel viewModel)
+        {
+            viewModel.ReferralStatuses = _context.ReferralStatuses.Select(x => new SelectListItem
+            {
+                Text = x.ReferralStatusType,
+                Value = x.ReferralStatusId.ToString()
+            });
+        }
 
-        //public ActionResult ReferralConfirmation(Referral referral)
-        //{
-        //    var referrals = _context.Referrals.Where(r => r.ReferralId == referral.ReferralId).SingleOrDefault();
-
-        //    return View(referrals);
-        //}
-
-        public ActionResult ReferralConfirmation(Referral referral)
+        public ActionResult ReferralConfirmation(int referralId)
         {
             var viewModel = new ReferrerInstanceViewModel
             {
-                ReferralId = referral.ReferralId,
-                ReferralStatus = _context.ReferralStatus.Select(x => new SelectListItem
-                {
-                    Text = x.Status,
-                    Value = x.ReferralStatusId.ToString()
-                })
+                ReferralId = referralId
             };
+            ConfigureViewModel(viewModel);
 
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ReferralConfirmation(Referral referral, HttpPostedFileBase upload)
+        public ActionResult ReferralConfirmation(ReferrerInstanceViewModel viewModel)
         {
-            var referrerId = User.Identity.GetUserId();
-            var model = _context.Referrals.Where(r => r.ReferralId == referral.ReferralId).SingleOrDefault();
-
-            var abc = new ReferralInstance();
-
-            if (upload != null && upload.ContentLength > 0)
+            if (!ModelState.IsValid)
             {
-                model.FileName = System.IO.Path.GetFileName(upload.FileName);
-                model.ContentType = upload.ContentType;
-                abc.ReferrerId = referrerId;
-                abc.ReferralId = model.ReferralId;
-                abc.ReferralStatus = "referred";
-                using (var reader = new System.IO.BinaryReader(upload.InputStream))
-                {
-                    model.Content = reader.ReadBytes(upload.ContentLength);
-                }
+                ConfigureViewModel(viewModel);
+                return View(viewModel);
             }
-            _context.ReferralInstances.Add(abc);
-            _context.SaveChanges();
 
-            return RedirectToAction("ReferrerCenter");
-        }
-
-        public ActionResult ReferredCandidates()
-        {
             var referrerId = User.Identity.GetUserId();
+            var referral = _context.Referrals
+                .Where(r => r.ReferralId == viewModel.ReferralId).Single();
 
-            var referrals = _context.ReferralInstances
-                 .Where(r => (r.ReferrerId == referrerId) && (r.ReferralStatus == "referred"))
-                    .Select(r => r.Referral);
-            return View(referrals);
+            var instance = new ReferrerInstance();
+            if (viewModel.ReferralStatusId == 1)
+            {
+                instance.ReferrerId = referrerId;
+                instance.ReferralId = viewModel.ReferralId;
+                instance.ReferralStatusId = 1;
+            }
+            else if (viewModel.ReferralStatusId == 2)
+            {
+                if (viewModel.ProofDoc != null && viewModel.ProofDoc.ContentLength > 0)
+                {
+                    referral.FileName = System.IO.Path.GetFileName(viewModel.ProofDoc.FileName);
+                    referral.ContentType = viewModel.ProofDoc.ContentType;
+                    instance.ReferrerId = referrerId;
+                    instance.ReferralId = referral.ReferralId;
+                    instance.ReferralStatusId = 2;
+                    using (var reader = new System.IO.BinaryReader(viewModel.ProofDoc.InputStream))
+                    {
+                        referral.Content = reader.ReadBytes(viewModel.ProofDoc.ContentLength);
+                    }
+                }
+                referral.IsReferralSuccessful = true;
+                referral.ReferrerId = referrerId;
+            }
+            else
+                return RedirectToAction("ReferrerCenter");
+
+            _context.ReferrerInstances.Add(instance);
+            _context.SaveChanges();
+            return RedirectToAction("ReferrerCenter");
         }
 
         public ActionResult Details(string candidateId)
         {
-            var candidate = _context.Users.Where(u => u.Id == candidateId).SingleOrDefault();
+            var candidate = _context.Users
+                .Where(u => u.Id == candidateId).SingleOrDefault();
             return View(candidate);
         }
     }

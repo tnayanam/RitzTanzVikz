@@ -12,8 +12,8 @@ namespace Bridge.Models
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Referral> Referrals { get; set; }
         public DbSet<Degree> Degrees { get; set; }
-        public DbSet<ReferralInstance> ReferralInstances { get; set; }
-        public DbSet<ReferralStatus> ReferralStatus { get; set; }
+        public DbSet<ReferrerInstance> ReferrerInstances { get; set; }
+        public DbSet<ReferralStatus> ReferralStatuses { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -79,7 +79,7 @@ namespace Bridge.Models
             // one referral can be there in referral instances
             // but if a referral instasnce exist then it must be linked to referral
             dBModelBuilder.Entity<Referral>()
-                  .HasMany(r => r.ReferralInstances)
+                  .HasMany(r => r.ReferrerInstances)
                   .WithRequired(r => r.Referral)
                   .HasForeignKey(r => r.ReferralId);
 
@@ -107,9 +107,15 @@ namespace Bridge.Models
                 .HasForeignKey(s => s.SkillId);
 
             dBModelBuilder.Entity<ReferralStatus>()
-                .HasMany(r => r.ReferralInstances)
-                .WithRequired(r => r.ReferralState)
+                .HasMany(r => r.ReferrerInstances)
+                .WithRequired(r => r.ReferralStatus)
                 .HasForeignKey(r => r.ReferralStatusId);
+
+            // one referal can have one or zero referrer.
+            dBModelBuilder.Entity<Referral>()
+             .HasOptional(a => a.Referrer)
+             .WithMany()
+             .HasForeignKey(a => a.ReferrerId);
 
             base.OnModelCreating(dBModelBuilder);
         }

@@ -11,15 +11,16 @@ namespace Bridge.ViewModels
         [Key]
         public int Id { get; set; }
 
-        [FileType("pdf|doc|docx|PDF", ErrorMessage = "File type is not valid.")]
+        [FileType("pdf|doc|docx|PDF|jpg|jpeg|JPG|jpeg", ErrorMessage = "File type is not valid.")]
         [Required]
-        public HttpPostedFileBase UploadedConfirmProof { get; set; }
+        public HttpPostedFileBase ProofDoc { get; set; }
 
-        public IEnumerable<SelectListItem> ReferralStatus { get; set; }
-
+        [Required]
         public int ReferralId { get; set; }
 
-        public int ReferralStatusId { get; set; }
+        [Required]
+        public int? ReferralStatusId { get; set; }
+        public IEnumerable<SelectListItem> ReferralStatuses { get; set; }
 
     }
 }

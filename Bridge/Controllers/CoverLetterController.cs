@@ -1,6 +1,7 @@
 ﻿using Bridge.Models;
 using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web.Mvc;
@@ -10,7 +11,6 @@ namespace Bridge.Controllers
     [Authorize]
     public class CoverLetterController : Controller
     {
-
         private ApplicationDbContext _context;
 
         public CoverLetterController()
@@ -23,8 +23,8 @@ namespace Bridge.Controllers
         {
             var candidateId = User.Identity.GetUserId();
             var coverLetterList = _context.CoverLetters
-                .Where(r => r.CandidateId == candidateId)
-                .OrderByDescending(r => r.datetime);
+                .Include(r => r.Company)
+                .Where(r => r.CandidateId == candidateId).OrderByDescending(r => r.datetime);
 
             return View(coverLetterList);
         }
@@ -32,8 +32,7 @@ namespace Bridge.Controllers
         public FileContentResult Details(int? coverLetterId)
         {
             var coverLetter = _context.CoverLetters
-                .Where(f => f.CoverLetterId == coverLetterId)
-                .Single();
+                .Where(f => f.CoverLetterId == coverLetterId).Single();
             var fileRes = new FileContentResult(coverLetter.Content.ToArray(), coverLetter.ContentType);
             fileRes.FileDownloadName = coverLetter.FileName;
 
@@ -52,16 +51,21 @@ namespace Bridge.Controllers
             return RedirectToAction("CoverLetterCenter");
         }
 
+        private void ConfigureViewModel(CoverLetterViewModel viewModel)
+        {
+            var companies = _context.Companies.Select(x => new SelectListItem
+            {
+                Text = x.CompanyName,
+                Value = x.CompanyId.ToString()
+            }).ToList();
+            companies.Insert(0, new SelectListItem { Value = "0", Text = "Other" });
+            viewModel.Companies = companies;
+        }
+
         public ActionResult UploadCoverLetter()
         {
-            var viewModel = new CoverLetterViewModel
-            {
-                Companies = _context.Companies.Select(x => new SelectListItem
-                {
-                    Text = x.CompanyName,
-                    Value = x.CompanyId.ToString()
-                })
-            };
+            var viewModel = new CoverLetterViewModel();
+            ConfigureViewModel(viewModel);
 
             return View(viewModel);
         }
@@ -115,8 +119,8 @@ namespace Bridge.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-
-            return View();
+            ConfigureViewModel(viewModel);
+            return View(viewModel);
         }
     }
 }

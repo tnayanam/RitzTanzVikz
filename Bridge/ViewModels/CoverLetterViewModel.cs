@@ -13,7 +13,7 @@ namespace Bridge.ViewModels
         [Required]
         public int? CompanyId { get; set; }
 
-        [RequiredIf("CompanyId", "4", ErrorMessage = "Company Name is required")]
+        [RequiredIf("CompanyId", "0", ErrorMessage = "Company Name is required")]
         [Display(Name = "Other Company")]
         public string TempCompany { get; set; }
 

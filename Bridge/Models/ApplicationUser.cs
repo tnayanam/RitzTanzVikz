@@ -13,15 +13,14 @@ namespace Bridge.Models
     {
         public ApplicationUser()
         {
-            ReferralInstances = new Collection<ReferralInstance>();
+            ReferralInstances = new Collection<ReferrerInstance>();
         }
 
         public int CompanyId { get; set; }
         public ICollection<Resume> Resumes { get; set; }
         public ICollection<CoverLetter> CoverLetters { get; set; }
-        //public ICollection<Referral> ReferrerReferral { get; set; }
         public ICollection<Referral> CandidateReferral { get; set; }
-        public ICollection<ReferralInstance> ReferralInstances { get; set; }
+        public ICollection<ReferrerInstance> ReferralInstances { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SelectedRoleType { get; set; }
