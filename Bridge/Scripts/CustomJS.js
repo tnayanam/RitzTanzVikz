@@ -71,3 +71,15 @@ $(function () {
         }
     });
 });
+
+$(function () {
+    var uploadButton = $('.js-toggle')
+    $('#ReferralStatusId').change(function () {
+        var referralStatusId = $(this).val();
+        if (referralStatusId == 1)
+            uploadButton.hide();
+        else
+            uploadButton.show();
+    });
+});
+

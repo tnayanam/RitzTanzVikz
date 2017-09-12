@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group js-toggle" style="display:none;">
             @Html.LabelFor(model => model.ProofDoc, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.ProofDoc, new { type = "file" })
@@ -33,12 +33,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

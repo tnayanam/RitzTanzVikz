@@ -1,4 +1,5 @@
 ﻿using Bridge.CustomValidation;
+using Foolproof;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
@@ -12,7 +13,7 @@ namespace Bridge.ViewModels
         public int Id { get; set; }
 
         [FileType("pdf|doc|docx|PDF|jpg|jpeg|JPG|jpeg", ErrorMessage = "File type is not valid.")]
-        [Required]
+        [RequiredIf("ReferralStatusId", "2", ErrorMessage = "File is required.")]
         public HttpPostedFileBase ProofDoc { get; set; }
 
         [Required]
