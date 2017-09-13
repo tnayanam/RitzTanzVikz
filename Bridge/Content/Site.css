@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: "Metrophobic", Helvetica, Arial, sans-serif;
-    background-color:#f4f4f4;
+    background-color: #f4f4f4;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,19 +21,20 @@ textarea {
 
 /*changing the background colout for menu*/
 .navbar-inverse {
-     background-color: #FF9800; 
-     border-color: #fefbf0; 
+    background-color: #FF9800;
+    border-color: #fefbf0;
 }
 
 /*logo size*/
-.navbar-brand{
-    font-size:30px;
+.navbar-brand {
+    font-size: 30px;
 }
 
 /*change in colour for the menu items and main logo*/
 .navbar-inverse .navbar-brand {
     color: #6a6967;
 }
+
 .navbar-inverse .navbar-nav > li > a {
     color: #6a6967;
 }
@@ -54,7 +55,7 @@ textarea {
 }
 
 /*hover effect on the menu items*/
-.navbar-inverse .navbar-brand:hover{
+.navbar-inverse .navbar-brand:hover {
     color: #191606;
 }
 
@@ -67,13 +68,13 @@ textarea {
 }*/
 
 /*create spaces between button in my account section*/
-.setBtnMargin{
+.setBtnMargin {
     margin: 3px;
-    }
+}
 
 /*adding a min container and will be putting rows inside it. added space so that it does not coincide with the main header/logo*/
-.main-container{
-    margin-top:40px;
+.main-container {
+    margin-top: 40px;
 }
 
 /*set colour for left nav menu*/
@@ -85,8 +86,8 @@ textarea {
 }
 
 /*set colour when men is active*/
-.active{
-    background-color:#FF9800 !important;
+.active {
+    background-color: #FF9800 !important;
 }
 
 /*determines width of button text*/
@@ -95,18 +96,18 @@ textarea {
     font-weight: 700;
 }
 
-.css-leftpad{
-    padding-left:5px;
+.css-leftpad {
+    padding-left: 5px;
 }
 
 /*color of left nav links*/
 .list-group-item {
-        background-color: #515d6b;
+    background-color: #515d6b;
 }
 /*left padding for left menu items*/
 .col-lg-3.account-menu {
     padding-left: 40px;
-      border-left: 2px solid #2e353e;
+    border-left: 2px solid #2e353e;
 }
 
 /*color for the men items in the left border-color*/
@@ -114,16 +115,16 @@ textarea {
 a.list-group-item {
     font-size: medium;
     color: white;
-       border-left-color: #c1b1b1;
+    border-left-color: #c1b1b1;
     border-left-width: thick;
-    border-bottom-color:white;
-    border-bottom-width:medium;
+    border-bottom-color: white;
+    border-bottom-width: medium;
 }
 
-a.list-group-item:hover, a.list-group-item:focus {
-    background-color: #357ebd;
-}
- 
+    a.list-group-item:hover, a.list-group-item:focus {
+        background-color: #357ebd;
+    }
+
 /*ToDO: horizontal scrolling prevention */
 /*html, body {
     max-width: 100%;
@@ -141,13 +142,12 @@ a.list-group-item:hover, a.list-group-item:focus {
 */
 /*making button in table panel to occur in center vertically*/
 .panel-heading {
-    overflow:auto;
+    overflow: auto;
     padding: 5px;
-
-    }
+}
 /*white color to the link element in the panel "refer me*/
 .panel-title > a {
-     color: #fff
+    color: #fff;
 }
 /*font size of the label in stats field*/
 .label {
@@ -157,18 +157,36 @@ a.list-group-item:hover, a.list-group-item:focus {
 /*Reward page badge colour*/
 .badge {
     background-color: #ff9800;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 /*making sure that delete button in tablur rows does not go to next line*/
-.css-inline{
-     display: inline; 
+.css-inline {
+    display: inline;
 }
 
-/*adding style to buttons*/
-.css-btn-style{
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
+/*tooltip size*/
+.tooltip-inner {
+    padding: 10px;
+}
+
+/*all the styling for the button*/
+.css-btn {
+    color: #515d6b !important;
+    border-color: currentColor;
+    border-width: 2px;
+    overflow: hidden;
+    padding: 0;
+    width: 25px;
+    line-height: 21px;
+    background-color: transparent;
     border-radius: 0px;
+}
+
+.fa {
+    font-size: 12px !important;
+}
+
+a.btn.css-btn {
+    margin: 0px 4px;
 }

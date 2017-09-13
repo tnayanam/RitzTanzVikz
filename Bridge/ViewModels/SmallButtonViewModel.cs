@@ -13,6 +13,7 @@ namespace Bridge.ViewModels
         public int? CoverLetterId { get; set; }
         public string CandidateId { get; set; }
         public int? SubscriptionId { get; set; }
+        public string Title { get; set; }
         public string ActionParameters
         {
             get

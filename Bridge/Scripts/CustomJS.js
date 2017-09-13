@@ -35,14 +35,11 @@ $(function () {
 // check whether referral already exist
 $(function () {
     var canSubmit = false;
-    debugger;
     $('#referralform').submit(function (e) {
-        debugger;
         // if Model state is not valid then return
         if (!$(this).valid()) {
             return // exit
         }
-        debugger;
         if (!canSubmit) {
             e.preventDefault();
             var data = $('#referralform').serialize();
@@ -53,7 +50,6 @@ $(function () {
                 data: data,
                 success: function (response) {
                     if (response.hasPreviousRequest) {
-                        debugger;
                         if (confirm("You've already applied for this job. Apply again?")) {
                             canSubmit = true;
                             $('#referralform').submit();
@@ -82,4 +78,9 @@ $(function () {
             uploadButton.show();
     });
 });
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
 
