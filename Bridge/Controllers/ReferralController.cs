@@ -1,4 +1,5 @@
-﻿using Bridge.Models;
+﻿using Bridge.Helpers;
+using Bridge.Models;
 using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
@@ -26,7 +27,7 @@ namespace Bridge.Controllers
                 .Include("Resume")
                 .Include("CoverLetter")
                 .Include("Degree")
-                .Where(r => r.CandidateId == candidateId);
+                .Where(r => r.CandidateId == candidateId).OrderByDescending(r => r.dateTime);
 
             return View(viewModel);
         }
@@ -114,12 +115,24 @@ namespace Bridge.Controllers
                 };
                 if (!string.IsNullOrEmpty(viewModel.TempCompany))
                 {
-                    var newCompany = new Company
+                    var TempCompany = Utils.MakeFirstLetterCaps(viewModel.TempCompany);
+                    var companyId = _context.Companies
+                        .Where(c => c.CompanyName == TempCompany).Select(c => c.CompanyId).SingleOrDefault();
+                    if (companyId != 0)
                     {
-                        CompanyName = viewModel.TempCompany
-                    };
-                    newCompany.Referrals.Add(referral);
-                    _context.Companies.Add(newCompany); ;
+                        referral.CompanyId = companyId;
+                        _context.Referrals.Add(referral);
+                    }
+                    else
+                    {
+                        var newCompany = new Company
+                        {
+                            CompanyName = Utils.MakeFirstLetterCaps(viewModel.TempCompany)
+                        };
+                        newCompany.Referrals.Add(referral);
+                        _context.Companies.Add(newCompany);
+                    }
+
                 }
                 else
                 {

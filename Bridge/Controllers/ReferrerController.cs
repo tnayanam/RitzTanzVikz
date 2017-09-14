@@ -32,7 +32,7 @@ namespace Bridge.Controllers
                .Include("CoverLetter")
                .Include("Resume")
                .Include("Degree")
-               .Include("Candidate");
+               .Include("Candidate").OrderByDescending(r => r.dateTime);
 
             return View(referrals);
         }

@@ -1,4 +1,5 @@
-﻿using Bridge.Models;
+﻿using Bridge.Helpers;
+using Bridge.Models;
 using Bridge.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
@@ -91,7 +92,7 @@ namespace Bridge.Controllers
                         };
                         if (!string.IsNullOrEmpty(viewModel.TempCompany))
                         {
-                            var tempCompany = new Company { CompanyName = viewModel.TempCompany };
+                            var tempCompany = new Company { CompanyName = Utils.MakeFirstLetterCaps(viewModel.TempCompany) };
                             using (var reader = new System.IO.BinaryReader(viewModel.UploadedCoverLetter.InputStream))
                             {
                                 tempcoverletter.Content = reader.ReadBytes(viewModel.UploadedCoverLetter.ContentLength);

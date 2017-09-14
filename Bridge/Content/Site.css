@@ -63,10 +63,6 @@ textarea {
     color: #191606;
 }
 
-/*.table-layout--center .table-layout__cell {
-    vertical-align: middle;
-}*/
-
 /*create spaces between button in my account section*/
 .setBtnMargin {
     margin: 3px;
@@ -132,9 +128,9 @@ a.list-group-item {
 }*/
 
 /*another work around to show table properly inside the main container*/
-.container-fluid.body-content {
+/*.container-fluid.body-content {
     padding-right: 10px;
-}
+}*/
 
 /*other soltuion
     <div class="container-fluid body-content">
@@ -189,4 +185,9 @@ a.list-group-item {
 
 a.btn.css-btn {
     margin: 0px 4px;
+}
+
+/*padding for the logo*/
+.css-padding {
+padding:0px;
 }

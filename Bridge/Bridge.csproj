@@ -221,6 +221,7 @@
     </Compile>
     <Compile Include="Helpers\ActiveMenuHelper.cs" />
     <Compile Include="Helpers\ClaimsPrincipalExtension.cs" />
+    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Migrations\201708051512447_InitialCreate.cs" />
     <Compile Include="Migrations\201708051512447_InitialCreate.Designer.cs">
       <DependentUpon>201708051512447_InitialCreate.cs</DependentUpon>
@@ -518,7 +519,38 @@
     <Compile Include="ViewModels\SmallButtonViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\1.jpg" />
+    <Content Include="Content\Images\10.jpeg" />
+    <Content Include="Content\Images\11.jpeg" />
+    <Content Include="Content\Images\12.jpeg" />
+    <Content Include="Content\Images\13.jpeg" />
+    <Content Include="Content\Images\14.jpeg" />
+    <Content Include="Content\Images\15.jpeg" />
+    <Content Include="Content\Images\16.jpeg" />
+    <Content Include="Content\Images\17.jpeg" />
+    <Content Include="Content\Images\19.jpeg" />
+    <Content Include="Content\Images\2.jpeg" />
+    <Content Include="Content\Images\20.jpeg" />
+    <Content Include="Content\Images\21.jpeg" />
+    <Content Include="Content\Images\22.jpeg" />
+    <Content Include="Content\Images\23.jpeg" />
+    <Content Include="Content\Images\24.jpeg" />
+    <Content Include="Content\Images\25.jpeg" />
+    <Content Include="Content\Images\26.jpeg" />
+    <Content Include="Content\Images\27.jpeg" />
+    <Content Include="Content\Images\29.jpeg" />
+    <Content Include="Content\Images\3.jpg" />
+    <Content Include="Content\Images\30.jpeg" />
+    <Content Include="Content\Images\31.jpeg" />
+    <Content Include="Content\Images\4.jpeg" />
+    <Content Include="Content\Images\5.jpg" />
+    <Content Include="Content\Images\6.jpeg" />
+    <Content Include="Content\Images\7.jpeg" />
+    <Content Include="Content\Images\9.jpeg" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\Logo1.PNG" />
+    <Content Include="Content\Images\logo2.PNG" />
+    <Content Include="Content\Images\logo3.PNG" />
     <Content Include="Scripts\CustomJS.js" />
     <Content Include="Scripts\mvcfoolproof.unobtrusive.js" />
     <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
