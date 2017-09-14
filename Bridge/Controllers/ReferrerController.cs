@@ -6,8 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 namespace Bridge.Controllers
 {
-    //[Authorize(Roles = "Referrer")]
-    [Authorize]
+    [Authorize(Roles = "Referrer")]
     public class ReferrerController : Controller
     {
         private ApplicationDbContext _context;

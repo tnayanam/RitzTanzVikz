@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Bridge.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Candidate")]
     public class ReferralController : Controller
     {
         private ApplicationDbContext _context;
