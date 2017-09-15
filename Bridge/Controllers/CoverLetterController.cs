@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Bridge.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Candidate")]
     public class CoverLetterController : Controller
     {
         private ApplicationDbContext _context;

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Bridge.Controllers
 {
-    //[Authorize(Roles = "Candidate")]
+    [Authorize(Roles = "Candidate")]
     public class ResumeController : Controller
     {
         private ApplicationDbContext _context;
